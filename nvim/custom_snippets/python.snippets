@@ -1,0 +1,36 @@
+snippet =
+print('==========')
+endsnippet
+
+snippet cl
+print($1)
+endsnippet
+
+snippet log
+self.log($1)
+endsnippet
+
+snippet len
+len($1)
+endsnippet
+
+snippet forr
+for $1 in range($2)
+endsnippet
+
+snippet pld
+#pylint: disable-all
+endsnippet
+
+snippet imp
+from helpers.Logger import print, log
+endsnippet
+
+
+
+snippet try
+try:
+	#1
+except Exception as e:
+		print(e)
+endsnippet

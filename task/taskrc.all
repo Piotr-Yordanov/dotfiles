@@ -1,0 +1,146 @@
+# [Created by task 2.6.2 7/21/2023 22:05:53]
+# Taskwarrior program configuration file.
+# For more documentation, see https://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+
+# Here is an example of entries that use the default, override and blank values
+#   variable=foo   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+# You can also refence environment variables:
+#   variable=$VALUE
+#   variable=$HOME/task
+
+# Use the command 'task show' to see all defaults and overrides
+
+# Files
+data.location=/home/alpha/warehouse/taskwarrior
+
+# To use the default location of the XDG directories,
+# move this configuration file from ~/.taskrc to ~/.config/task/taskrc and uncomment below
+
+#data.location=~/.local/share/task
+hooks.location=~/.config/task/hooks
+
+# Color theme (uncomment one to use)
+#include light-16.theme
+# include light-256.theme
+# include dark-16.theme
+# include dark-256.theme
+#include dark-red-256.theme
+# include dark-green-256.theme
+#include dark-blue-256.theme
+#include dark-violets-256.theme
+#include dark-yellow-green.theme
+#include dark-gray-256.theme
+#include dark-gray-blue-256.theme
+#include solarized-dark-256.theme
+# include solarized-light-256.theme
+# include no-color.theme
+
+# ============================================================================= #
+#                                     TUI                                       #
+# ============================================================================= #
+uda.taskwarrior-tui.task-report.auto-insert-double-quotes-on-add=false
+uda.taskwarrior-tui.task-report.show-info=false
+uda.taskwarrior-tui.task-report.looping=true
+uda.taskwarrior-tui.task-report.jump-on-task-add=true
+uda.taskwarrior-tui.task-report.prompt-on-delete=true
+uda.taskwarrior-tui.task-report.prompt-on-done=true
+uda.taskwarrior-tui.style.report.selection=sd
+uda.taskwarrior-tui.style.report.scrollbar=red
+uda.taskwarrior-tui.tabs.change-focus-rotate=true
+uda.taskwarrior-tui.context-menu.select-on-move=true
+uda.taskwarrior-tui.selection.reverse=yes
+uda.taskwarrior-tui.task-report.use-all-tasks-for-completion=true
+uda.taskwarrior-tui.shortcuts.1=~/.config/task/tui/1.sh
+uda.taskwarrior-tui.shortcuts.2=~/.config/task/tui/2.sh
+uda.taskwarrior-tui.shortcuts.3=~/.config/task/tui/3.sh
+uda.taskwarrior-tui.shortcuts.4=~/.config/task/tui/4.sh
+uda.taskwarrior-tui.shortcuts.5=~/.config/task/tui/5.sh
+uda.taskwarrior-tui.shortcuts.6=~/.config/task/tui/6.sh
+uda.taskwarrior-tui.shortcuts.7=~/.config/task/tui/7.sh
+uda.taskwarrior-tui.shortcuts.8=~/.config/task/tui/8.sh
+uda.taskwarrior-tui.shortcuts.9=~/.config/task/tui/9.sh
+uda.taskwarrior-tui.task-report.next.filter=status:pending and -BLOCKING description!~header project!~_backlog
+
+
+# TASKD server
+taskd.server=localhost
+taskd.credentials = Public/Alpha/16122ea2-3571-4574-a0de-a70d23805f93
+
+
+# ============================================================================= #
+#                                  COLORS                                       #
+# ============================================================================= #
+color.label=white
+color.due=white
+color.label.sort=yellow
+color.tagged=rgb111
+color.tag.next=green
+color.active=bold black on red
+
+color.due=red on black
+# color.overdue=bold white on red
+
+# color.project._upnext=rgb222
+# color.project._backlog=rgb111
+
+# ============================================================================= #
+#                                   REPORTS                                     #
+# ============================================================================= #
+report.next.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Description,Urg,Wait,Todoist
+report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.truncated_count,urgency,wait.remaining,todoist
+report.next.sort=urgency-,id+,tags-/,project-/,urgency-,due-
+# report.next.filter = status:pending (pro:release)
+
+# report.all.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Description,Urg,Wait
+# report.all.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.truncated_count,urgency,wait.remaining
+# report.all.sort=tags+\/,due+\/,project-
+# report.all.filter=status:pending -BLOCKED
+#
+# report.test.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Description,Urg,Wait
+# report.test.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.truncated_count,urgency,wait.remaining
+# report.test.sort=tags+,project-/,due+,urgency-
+# # report.test.filter=status:pending (pro:release)
+#
+# report._reviewed.description=Tasksh review report.  Adjust the filter to your needs.
+# report._reviewed.columns=uuid
+# report._reviewed.sort=reviewed+,modified+
+# report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )
+
+# dateformat=a D b Y
+# uda.reviewed.type=date
+# uda.reviewed.label=Reviewed
+
+# ============================================================================= #
+#                                 CONTEXT                                       #
+# ============================================================================= #
+context.inbox.read=+in
+context.inbox.write=+in
+
+context.next.read=+next or due:today
+context.next.write=+next
+
+context.office.read=+office
+context.office.write=+office
+
+context.home.read=+home
+context.home.write=+home
+
+context.waiting_for.read=+waiting_for
+context.waiting_for.write=+waiting_for
+
+context.hobbies.read=+hobbies
+context.hobbies.write=+hobbies
+
+context.phone.read=+phone
+context.phone.write=+phone
+
+context.people.read=+people
+context.people.write=+people
+
+
+uda.todoist.type=string
+uda.todoist.label=Todoist

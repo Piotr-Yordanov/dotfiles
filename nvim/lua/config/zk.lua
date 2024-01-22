@@ -1,0 +1,64 @@
+--
+-- function map(mode, shortcut, command)
+--   vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
+-- end
+--
+-- local zk = require("zk")
+-- local util = require("zk.util")
+-- local commands = require("zk.commands")
+--
+-- local function createNewNote()
+--   return function(options)
+--     local title = vim.fn.input('Title: ')
+--     local aliases = string.lower(title):gsub(" ", "-")
+--     local defaults = {
+--       dir= vim.fn.expand("%:p:h"),
+--       title= title,
+--       extra= {
+--         aliases= aliases
+--       }
+--     }
+--     options = vim.tbl_extend("force", defaults, options or {})
+--     zk.new(options)
+--
+--
+--   end
+-- end
+--
+-- commands.add("ZkCreateNewNote", createNewNote())
+-- commands.add("ZkCustomNewFromTitleSelection", function(options)
+--   local location = util.get_lsp_location_from_selection()
+--   local selected_text = util.get_text_in_range(location.range)
+--   assert(selected_text ~= nil, "No selected text")
+--   local aliases = string.lower(selected_text):gsub(" ", "-")
+--
+--   local defaults = {
+--     dir= vim.fn.expand("%:p:h"),
+--     title= selected_text,
+--     extra= {
+--       aliases= aliases
+--     }
+--   }
+--   options = vim.tbl_extend("force", defaults, options or {})
+--
+--   zk.new(vim.tbl_extend("force", { insertLinkAtLocation = location}, options or {}))
+-- end, { needs_selection = true })
+--
+-- commands.add("ZkCustomNewFromContentSelection", function(options)
+--   local title = vim.fn.input('Title: ')
+--   local aliases = string.lower(title):gsub(" ", "-")
+--
+--   local defaults = {
+--     dir= vim.fn.expand("%:p:h"),
+--     title= title,
+--     extra= {
+--       aliases= aliases
+--     }
+--   }
+--   options = vim.tbl_extend("force", defaults, options or {})
+--
+--   local location = util.get_lsp_location_from_selection()
+--   local selected_text = util.get_text_in_range(location.range)
+--   assert(selected_text ~= nil, "No selected text")
+--   zk.new(vim.tbl_extend("force", { insertLinkAtLocation = location, content = selected_text }, options or {}))
+-- end, { needs_selection = true })

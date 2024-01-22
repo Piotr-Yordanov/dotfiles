@@ -1,0 +1,140 @@
+{
+  "suggest.echodocSupport": true,
+  "suggest.maxCompleteItemCount": 2000,
+  "coc.preferences.formatOnSaveFiletypes": ["python", "javascript", "typescriptreact", "json", "typescript", "html"],
+  "prettier.printWidth": 150,
+  "eslint.filetypes": ["javascript", "typescriptreact"],
+  "eslint.autoFixOnSave": true,
+  "eslint.run": "onSave",
+  "tsserver.log": "verbose",
+  "tsserver.trace.server": "verbose",
+  "snippets.userSnippetsDirectory": "/home/alpha/.config/nvim/custom_snippets",
+  "snippets.extends": {
+    "javascriptreact": ["javascript"],
+    "typescriptreact": ["javascript"]
+  },
+  "ignore_all_lsp": true,
+  "coc.source.word.filetypes": ["text", "markdown"],
+  "diagnostic.autoRefresh": true,
+  "diagnostic.errorSign": "",
+  "diagnostic.warningSign": "",
+  "diagnostic.hintSign": "",
+  "diagnostic.infoSign": "•",
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.messageTarget": "float",
+  "diagnostic.messageDelay": 1500,
+  "diagnostic.virtualText": true,
+  "pyright.enable": true,
+  "python.venvPath": "/home/alpha/.cache/pypoetry/virtualenvs/",
+  "python.linting.pylintEnabled": true,
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "/usr/bin/black",
+  "suggest.invalidInsertCharacters": [],
+  "suggest.completionItemKindLabels": {
+    "method": "",
+    "function": "",
+    "folder": "",
+    "variable": "",
+    "constant": "\uf8ff",
+    "struct": "\ufb44",
+    "class": "\uf0e8",
+    "interface": "\ufa52",
+    "text": "\ue612",
+    "enum": "\uf435",
+    "enumMember": "\uf02b",
+    "color": "\ue22b",
+    "property": "\ufab6",
+    "field": "\uf93d",
+    "unit": "\uf475",
+    "file": "\uf471",
+    "value": "\uf8a3",
+    "event": "\ufacd",
+    "keyword": "\uf893",
+    "snippet": "\uf64d",
+    "operator": "\uf915",
+    "reference": "\uf87a",
+    "typeParameter": "\uf278",
+    "default": ""
+  },
+  "cSpell.ignoreRegExpList": ["\\]\\([^)]*?\\)"],
+  "cSpell.userWords": [
+    "Backtesting",
+    "Hạnh",
+    "Jedis",
+    "Metacognitive",
+    "Nhất",
+    "Pacman",
+    "Piotr",
+    "Polybar",
+    "Quantower",
+    "Sith",
+    "Thích",
+    "VM's",
+    "Vipassanā",
+    "Yordanov",
+    "blogpost",
+    "distro",
+    "meditators",
+    "rofi",
+    "vcxsrv",
+    "wslg"
+  ],
+  "cSpell.enabledLanguageIds": ["markdown"],
+  "cSpellExt.enableDictionaries": ["french"],
+  "cSpell.language": "en,fr",
+  "diagnostic-languageserver.filetypes": {
+    "markdown": ["proselint", "alex"]
+  },
+  "diagnostic-languageserver.linters": {
+    "alex": {
+      "command": "alex",
+      "debounce": 200,
+      "isStderr": true,
+      "args": ["--stdin"],
+      "offsetLine": 0,
+      "offsetColumn": 0,
+      "sourceName": "alex.js",
+      "formatLines": 1,
+      "formatPattern": [
+        "^\\s*(\\d+):(\\d+)-(\\d+):(\\d+)\\s{2}([a-z]+)\\s{2}(.*?)\\s{2,}([a-z-]+)\\s{2,}([a-z-]+)$",
+        {
+          "line": 1,
+          "column": 2,
+          "endLine": 3,
+          "endColumn": 4,
+          "security": 5,
+          "message": 6
+        }
+      ],
+      "securities": {
+        "warning": "warning",
+        "error": "error"
+      }
+    },
+    "proselint": {
+      "command": "/usr/sbin/proselint",
+      "isStdout": true,
+      "isStderr": false,
+      "debounce": 100,
+      "args": ["-"],
+      "offsetLine": 0,
+      "offsetColumn": 0,
+      "sourceName": "proselint",
+      "formatLines": 1,
+      "formatPattern": [
+        "^[^:]+:(\\d+):(\\d+):(\\s)(.*)$",
+        {
+          "line": 1,
+          "column": 2,
+          "security": 3,
+          "message": 4
+        }
+      ],
+      "securities": {
+        " ": "info"
+      }
+    }
+  },
+  "rainbow-fart.disable-voice-packages": [],
+  "snippets.ultisnips.pythonPrompt": false
+}

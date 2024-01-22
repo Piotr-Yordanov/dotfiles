@@ -1,0 +1,3 @@
+-- Colorscheme
+vim.cmd 'runtime! color_customisation.vim'
+vim.cmd 'colorscheme typewriter'

@@ -1,0 +1,19 @@
+#!/usr/bin/bash
+
+## Clipboard
+sudo nohup greenclip daemon </dev/null >/tmp/green 2>/tmp/green &
+
+## Synology Syncing
+# killall cloud-drive-ui
+synology-drive 
+
+## Laptop Specific
+sudo smbios-thermal-ctl --set-thermal-mode performance
+
+killall todoist_watch
+sudo nohup /home/alpha/.config/bin/todoist_watch daemon </dev/null >/tmp/todoist 2>/tmp/todoist &
+
+
+# Execute the stuff related to the hostname
+hostname=$(hostname)
+sh "/home/alpha/.config/bin/configs.$hostname"

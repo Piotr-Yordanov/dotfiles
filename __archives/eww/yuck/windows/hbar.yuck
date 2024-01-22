@@ -1,0 +1,88 @@
+(defwidget panel_clock [] (box :class "button-bin"
+    (button
+        :onclick "${EWW_CONFIG_DIR}/scripts/launcher toggle_menu calendar"
+        :class "button clock"
+        (label  :text "  ${date}")
+    )
+))
+
+(defwidget panel_date [] (box :class "button-bin"
+    (button
+        :onclick "${EWW_CONFIG_DIR}/scripts/launcher toggle_menu calendar"
+        :class "button clock"
+        (label  :text " ${panel_date}")
+
+    )
+))
+
+(defwidget panel_cpu [] (box :class "button-bin"
+    (button
+        :class "button clock"
+        (label  :text "󰘚 ${round(EWW_CPU.avg,0)}%")
+    )
+))
+(defwidget panel_ram [] (box :class "button-bin"
+    (button
+        :class "button clock"
+        (label  :text "󰍛 ${panel_ram}")
+    )
+))
+; (defwidget sysprogress_cpu [] (sysprogress
+;     :css "cpu"
+;     :tip "CPU ${round(EWW_CPU.avg,0)}%"
+;     :data {EWW_CPU.avg}
+;     :icon "󰘚"))
+
+(defwidget panel_media [] (box :class "button-media" 
+    :visible {media.preferred != "null"}
+    :space-evenly false
+    (box :class "text"
+        :onclick "${EWW_CONFIG_DIR}/scripts/player ${media.preferred.name} play-pause"
+        :onscroll "${EWW_CONFIG_DIR}/scripts/player ${media.preferred.name} {}"
+        (box
+            (label 
+              :limit-width 30 
+              :text "${media.preferred.artist} - ${media.preferred.title} ")
+        )
+    )
+    (eventbox :class "media-button"
+        :onclick "${EWW_CONFIG_DIR}/scripts/player ${media.preferred.name} previous"
+        :style "transform: rotate(180deg)"
+        (box (label :text " " ))
+    )
+    (eventbox :class "media-button"
+        :onclick "${EWW_CONFIG_DIR}/scripts/player ${media.preferred.name} play-pause"
+        (box (label :text " "))
+    )
+    (eventbox :class "media-button"
+        :onclick "${EWW_CONFIG_DIR}/scripts/player ${media.preferred.name} next"
+        :style "transform: rotate(180deg)"
+        (box (label :text " "))
+    )
+))
+
+(defwidget hbar [] (centerbox
+    :class "hpanel ${workspaces.active_empty ? "floating" : ""}"
+    (box
+        :class "leftBar"
+        :space-evenly false
+        (panel_launcher)
+        (panel_workspaces :orientation "h")
+        ; (panel_window :angle 0)
+        (panel_media)
+    )
+    (box
+        :class "centerBar"
+        (panel_date)
+    )
+    (box
+        :class "righBar"
+        :space-evenly false
+        :halign "end"
+        (panel_clock)
+        (panel_cpu)
+        (panel_ram)
+        (panel_system_indicators :orientation "h")
+        ; (panel_powermenu)
+    )
+))

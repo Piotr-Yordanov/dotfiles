@@ -1,0 +1,70 @@
+.hpanel {
+    min-height: 30px;
+    color: $fg_color;
+    // background-color: $bg_color;
+    border-bottom: $border_width solid $popover_border_color;
+    box-shadow: 0 0 6px 0 rgba(0,0,0,0.8);
+    
+    .button-media{
+        @include button($flat: false, $radii: $panel_button_radius);
+        padding: 0px 10px;
+        margin: 3px 2px;
+        &.launcher{ margin-left: 4px; color: $red}
+        &.powermenu{ margin-right: 4px }
+        .text {
+          color: transparentize($fg_color, 0.4);
+          padding: 4px;
+        }
+        .media-button {
+        }
+    }
+
+    .button-bin{
+        .clock {
+          @include button($flat: false, $radii: $panel_button_radius);
+          font-size: 0.84em;
+        }
+        margin: 3px 2px;
+        &.launcher{ margin-left: 4px; color: $red}
+        &.powermenu{ margin-right: 4px }
+    }
+
+    .button{
+        .icon{ font-size: 1.2em;}
+        @include button($flat: true, $radii: $panel_button_radius);
+        > * { padding: 0 .7em }
+
+        &.launcher{ color: transparentize($blue, 0.5); }
+        &.powermenu{ color: $red; }
+        &.window{ @include button($flat: true, $interactive: false) }
+
+        &.workspaces{
+            @include button($flat: false, $radii: $panel_button_radius);
+            .workspace-btn{
+                label{ font-size: 1.0em; margin-left: 4px; }
+                margin: 2px;
+                &.empty{ color: transparentize($fg_color, 0.3); }
+                &.occupied{ color: transparentize($fg_color, 0.3); }
+                &.active{ color: transparentize($red, 0); }
+                &:hover{
+                    &.empty{ color: transparentize($fg_color, 0.18); }
+                    &.occupied{ color: $fg_color; }
+                }
+            }
+        }
+
+        &.system-indicators{
+            @include system-indicators($orientation: 'h');
+        }
+
+        &.media{
+            .icon{
+                margin-right: .2em;
+                color: $green;
+                &.spotify{ color: $green; }
+                &.firefox{ color: $orange; }
+                &.mpv{ color: $magenta; }
+            }
+        }
+    }
+}

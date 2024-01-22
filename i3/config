@@ -1,0 +1,278 @@
+# i3 config fime (v4)
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+# Set mod key (Mod1=<Alt>, Mod4=<Super>)
+set $mod Mod1
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# Configure border style <normal|1pixel|pixel xx|none|pixel>
+new_window none
+new_float none
+
+
+
+#############################
+### COLORS                ###
+#############################
+# set $dark #2a2a2a
+set $dark #000000
+# set $gray #506070
+set $gray #d3d3d3
+set $blue #8cd0d3
+set $cyan #94bff3
+set $mauve #55559d
+set $green #60b48a
+set $white #ffffff
+set $red #ef5350
+set $teal #008080
+set $indigo #6366f1
+set $borderColor #6366f1
+
+
+# client.focused   $gray $gray $white $gray $gray
+# client.focused   $blue $blue $white $blue $blue
+# client.unfocused   $gray $gray $gray $gray $gray
+# client.focused   $dark $dark $white $dark $dark
+# client.focused   $gray $gray $gray $gray $white
+# client.focused   $mauve $mauve $white $mauve $mauve
+# client.focused   $cyan $cyan $white $cyan $cyan
+# client.unfocused   $dark $dark $dark $dark $dark
+
+# client.focused   $green $green $white $green $green
+# client.focused   $red $red $red $red $red
+client.focused   $borderColor $borderColor $borderColor $borderColor $borderColor
+
+
+# Use Mouse+$mod to drag floating windows
+floating_modifier $mod
+floating_minimum_size 2000 x 1300
+floating_minimum_size 75 x 50
+
+
+# start a terminal
+# bindsym $mod+Return exec --no-startup-id termite
+# bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+Return exec --no-startup-id kitty
+
+# THE FLOATING TERMINAL
+# bindsym $mod+Shift+n exec --no-startup-id termite -t "floating_termite"
+# for_window [class="Termite" title="floating_termite"] floating toggle
+# bindsym $mod+Ctrl+n exec --no-startup-id alacritty -t "floating_terminal"
+# bindsym $mod+Ctrl+n exec --no-startup-id kitty -t "floating_terminal"
+# for_window [class="Alacritty" title="floating_terminal"] floating toggle
+
+# open a terminal in a vertical split
+
+
+# kill focused window
+bindsym $mod+q kill
+
+# start program launcher
+# bindsym $mod+d exec --no-startup-id /usr/sbin/rofi -show run
+bindsym $mod+d exec --no-startup-id fish -c 'rofi -show run'
+bindsym $mod+i exec --no-startup-id fish -c 'task context inbox && rofi -modi tasks:rofi-taskwarrior -show tasks -matching fuzzy'
+bindsym $mod+shift+f exec --no-startup-id /usr/sbin/rofi -show file-browser-extended  -file-browser-depth 10 -file-browser-dir ~/
+bindsym $mod+ctrl+v exec --no-startup-id ~/.config/bin/rofigreenclip
+
+
+# To figure out the `.` keycode, i need to run
+# xev -event keyboard
+# Then look for the 0x code
+bindsym Mod4+0x2e exec --no-startup-id rofimoji \
+  --selector-args="-theme ~/.config/rofi/rofimoji_dmenu.rasi" \
+  --hidden-descriptions
+
+focus_follows_mouse yes
+
+# Resizing of windows
+bindsym $mod+Shift+w resize shrink width 10px or 10ppt
+bindsym $mod+Shift+s resize grow width 10px or 10ppt
+# bindsym $mod+Shift+w exec $HOME/.config/i3/scripts/move_mouse_left.sh
+# bindsym $mod+Shift+s exec $HOME/.config/i3/scripts/move_mouse_right.sh
+# bindsym $mod+Shift+w resize grow height 10px or 10ppt
+# bindsym $mod+Shift+s resize shrink height 10px or 10ppt
+
+
+# change focus
+bindsym $mod+Ctrl+h focus left
+bindsym $mod+Ctrl+j focus down
+bindsym $mod+Ctrl+k focus up
+bindsym $mod+Ctrl+l focus right
+
+# Focus last floating/tiling container
+bindsym $mod+Ctrl+t focus mode_toggle
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+
+# Move focused container to workspace
+# bindsym $mod+Ctrl+1 move container to workspace $0
+# bindsym $mod+Ctrl+2 move container to workspace $1
+# bindsym $mod+Ctrl+3 move container to workspace $2
+# bindsym $mod+Ctrl+4 move container to workspace $3
+# bindsym $mod+Ctrl+5 move container to workspace number 5
+# bindsym $mod+Ctrl+6 move container to workspace number 6
+# bindsym $mod+Ctrl+7 move container to workspace number 7
+# bindsym $mod+Ctrl+8 move container to workspace number 8
+# bindsym $mod+Ctrl+9 move container to workspace number 9
+# bindsym $mod+Ctrl+0 move container to workspace number 0
+
+# Move to workspace with focused container
+bindsym $mod+Shift+1 move container to workspace $0; workspace $0
+bindsym $mod+Shift+2 move container to workspace $1; workspace $1
+bindsym $mod+Shift+3 move container to workspace $2; workspace $2
+# bindsym $mod+Shift+4 move container to workspace $3; workspace $3
+
+# split orientation
+# bindsym $mod+h split h;exec notify-send 'tile horizontally'
+# bindsym $mod+v split v;exec notify-send 'tile vertically'
+bindsym $mod+Shift+e split h
+
+# toggle fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+# toggle tiling / floating
+bindsym $mod+t floating toggle
+
+#############################
+###      WorkSpaces       ###
+#############################
+set $0 0
+set $1 1
+set $2 2
+set $3 3
+set $4 4
+set $5 5
+set $6 6
+set $7 7
+set $8 8
+set $9 9
+set $10 10
+
+
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+ctrl+c workspace 4
+bindsym $mod+ctrl+q workspace 5
+bindsym $mod+ctrl+w workspace 6
+bindsym $mod+ctrl+e workspace 7
+bindsym $mod+ctrl+r workspace 8
+bindsym $mod+ctrl+p workspace 9
+bindsym $mod+Tab workspace back_and_forth
+
+assign [class="Google-chrome"] $4
+assign [class="KeePassXC"] $9
+assign [class="Chromium"] $4
+
+# assign [class="Ferdium"] $4
+assign [class="discord"] $5
+assign [class="obsidian"] $6
+assign [class="discord"] $5
+
+
+
+#############################
+###      SCRATCHPAD       ###
+#############################
+bindsym $mod+ctrl+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+#############################
+###       General         ###
+#############################
+
+# Pulse Audio Controls
+bindsym XF86AudioRaiseVolume  exec --no-startup-id fish -c raise_volume
+bindsym XF86AudioLowerVolume  exec --no-startup-id fish -c lower_volume
+bindsym XF86AudioMute         exec --no-startup-id fish -c volume_toggle
+
+# MPD Control
+# Find more using xbindkeys --key
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPrev exec mpc prev
+
+# Screen brightness controls
+# bindsym XF86MonBrightnessUp   exec "light -A 5; notify-send 'brightness up'"
+bindsym XF86MonBrightnessUp   exec "sudo light -A 2"
+bindsym XF86MonBrightnessDown exec "sudo light -U 2"
+
+
+#############################
+### settings for i3-gaps: ###
+#############################
+
+# Set inner/outer gaps
+gaps inner 8
+gaps outer 4
+
+# Hide borders
+# hide_edge_borders 1
+for_window [class="^.*"] border pixel 4
+
+# Set shut down, restart and locking features
+bindsym $mod+0 mode "$mode_system"
+set $mode_system (l)ock, (e)xit, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id betterlockscreen -l dim; mode "default"
+    bindsym e exec --no-startup-id i3-msg exit
+    bindsym s exec --no-startup-id systemctl suspend; mode "default"
+    bindsym h exec --no-startup-id systemctl hibernate; mode "default"
+    bindsym r exec --no-startup-id shutdown -r now
+    bindsym Shift+s exec --no-startup-id shutdown now
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Taking Screenshots
+bindsym $mod+s exec --no-startup-id path="$HOME/Pictures/$(date +%s).png" && maim -s "$path" && xclip -selection clipboard -t image/png "$path"
+# bindsym Print exec $HOME/.config/bin/screenshot
+
+
+#############################
+### XProfile              ###
+#############################
+exec --no-startup-id xrdb $HOME/.config/.Xresources
+# exec --no-startup-id xmodmap $HOME/.config/Xmodmap
+exec --no-startup-id xset r rate 270 70
+exec --no-startup-id picom --config $HOME/.config/picom/picom.config
+# exec --no-startup-id $HOME/.config/i3/alternative_layouts.py
+# exec --no-startup-id /usr/local/share/xrandr/setup
+
+# Autostart applications
+exec --no-startup-id $HOME/.config/bin/common
+# exec --no-startup-id fish -c obsidian
+# exec --no-startup-id fish -c discord
+exec --no-startup-id warpd
+exec --no-startup-id keepassxc
+exec --no-startup-id fish -c google-chrome-stable
+#
+# exec --no-startup-id alacritty -t 'tt_alacritty' -e taskwarrior-tui
+# assign [class="Alacritty" title="tt_alacritty"] $7
+
+#####################################
+### FLOATING WINDOWS              ###
+#####################################
+
+# Manage PAVUCONTROL
+bindsym $mod+m [con_mark="music"] scratchpad show
+for_window [class="Pavucontrol"] mark "music", move scratchpad
+exec systemd-run --property=Restart=always --user --no-ask-password pavucontrol
+
+# Manage One Shot Terminal
+bindsym $mod+a [con_mark="upper-floating"] scratchpad show
+for_window [title="UpperFloating"] mark "upper-floating", move scratchpad
+exec systemd-run --property=Restart=always --user --no-ask-password kitty -T UpperFloating
+
+# Manage One Shot Terminal
+bindsym $mod+Ctrl+n [con_mark="floating-terminal"] scratchpad show
+for_window [title="FloatingTerminal"] mark "floating-terminal", move scratchpad
+exec systemd-run --property=Restart=always --user --no-ask-password kitty -T FloatingTerminal

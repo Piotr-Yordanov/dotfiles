@@ -1,0 +1,4 @@
+killall waybar
+killall eww
+
+nohup sh /home/alpha/.config/eww/scripts/init  </dev/null >/tmp/nohup.out 2>/tmp/nohup.err &

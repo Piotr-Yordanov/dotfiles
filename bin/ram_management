@@ -1,0 +1,6 @@
+#/bin/bash
+# Add this to crontab -e
+# */5 * * * * /home/alpha/.config/bin/ram_management
+
+/home/alpha/.config/bin/restart_eww
+rm /home/alpha/.local/share/sddm/wayland-session.log

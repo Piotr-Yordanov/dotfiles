@@ -1,0 +1,74 @@
+snippet tt ""
+---
+tags: [project, $1]
+---
+
+= `!p snip.rv = snip.basename` =
+== $2 | status:pending +${1|office,home,computer|} project:$2 ==
+* $3
+endsnippet
+
+
+
+snippet to ""
+---
+tags: [project, office]
+---
+
+= `!p snip.rv = snip.basename` =
+== $2 | status:pending +office project:$2 ==
+* $3
+endsnippet
+
+
+
+snippet th ""
+---
+tags: [project, home]
+---
+
+= `!p snip.rv = snip.basename` =
+== $2 | status:pending +home project:$2 ==
+* $3
+endsnippet
+
+
+
+snippet tag
+---
+tags: [project]
+---
+
+= `!p snip.rv = snip.basename` =
+endsnippet
+
+=========================================
+
+snippet tte ""
+---
+tags: [evergreen, $1]
+---
+
+= `!p snip.rv = snip.basename` =
+$2
+endsnippet
+
+snippet ti ""
+---
+tags: [inbox]
+---
+
+= `!p snip.rv = snip.basename` =
+$1
+endsnippet
+
+
+
+snippet tw ""
+= __waiting_for || status:pending +waiting_for =
+== $2 | project:$2 ==
+* $3
+endsnippet
+
+
+

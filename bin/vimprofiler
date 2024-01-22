@@ -1,0 +1,2 @@
+#!/bin/sh
+$HOME/.config/bin/vim-profiler/vim-profiler.py nvim

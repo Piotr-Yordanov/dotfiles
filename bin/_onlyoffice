@@ -1,0 +1,3 @@
+#/bin/sh
+Xwayland :12 &
+DISPLAY=:12 onlyoffice-desktopeditors

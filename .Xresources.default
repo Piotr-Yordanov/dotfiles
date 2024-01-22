@@ -1,0 +1,11 @@
+! Fonts {{{
+Xft.antialias: true
+Xft.hinting:   true
+Xft.rgba:      rgb
+Xft.hintstyle: hintfull
+<<<<<<< HEAD:.Xresources
+Xft.dpi:       160
+=======
+Xft.dpi:       60
+>>>>>>> 1735e5d3146d2f52377e0cf294a27e7ebcbe3abf:.Xresources.default
+! }}}

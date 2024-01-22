@@ -1,0 +1,7 @@
+#!/usr/bin/fish
+xset r rate 270 70
+setxkbmap -option ctrl:swapcaps
+
+## Polybar
+killall polybar
+nohup $HOME/.config/polybar/launch.sh --grayblocks  </dev/null >/tmp/nohup.out 2>/tmp/nohup.err &

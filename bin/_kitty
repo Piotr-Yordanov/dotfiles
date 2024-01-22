@@ -1,0 +1,3 @@
+# /bin/bash
+# kitty --single-instance --instance-group main --listen-on=unix:@mykitty -o allow_remote_control=yes "$@" 
+kitty --single-instance --instance-group main --listen-on=unix:@"$(date +%s%N)" -o allow_remote_control=yes "$@" 

@@ -1,0 +1,33 @@
+#!/usr/bin/fish
+
+# Stuff
+# feh --bg-fill $HOME/.config/feh/black-white/luke-matthews-224969-unsplash.jpg
+feh --bg-fill $HOME/.config/feh/sith_last_supper.jpg
+feh --bg-center $HOME/.config/feh/monk-meditation.jpg
+
+kill_window.sh "tt_alacritty"
+nohup alacritty -t 'tt_alacritty' -e taskwarrior-tui</dev/null >/tmp/green 2>/tmp/green &
+
+
+## Polybar
+killall polybar
+nohup $HOME/.config/polybar/launch.sh --grayblocks  </dev/null >/tmp/nohup.out 2>/tmp/nohup.err &
+
+
+# xrdb $HOME/.config/.Xresources </dev/null >/tmp/xrdb.out 2>/tmp/xrdb.err &
+# xmodmap $HOME/.config/Xmodmap </dev/null >/tmp/xmodmap.out 2>/tmp/xmodmap.err &
+xset r rate 270 70
+setxkbmap -option ctrl:swapcaps
+
+## Clipboard
+nohup greenclip daemon </dev/null >/tmp/green 2>/tmp/green &
+
+## Synology Syncing
+nohup synology-drive </dev/null >/tmp/synology 2>/tmp/synology &
+
+## Laptop Specific
+sudo smbios-thermal-ctl --set-thermal-mode performance
+
+
+/usr/bin/ps aux | grep alternative_layouts.py | awk '{print $2}' | xargs kill -9
+nohup $HOME/.config/i3/alternative_layouts.py </dev/null >/tmp/green 2>/tmp/green &

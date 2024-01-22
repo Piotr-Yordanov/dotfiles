@@ -1,0 +1,123 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+#
+snippet cl
+console.log($1)
+endsnippet
+
+snippet =
+console.log('=========')
+endsnippet
+
+snippet tap
+R.tap(console.log),
+
+endsnippet
+
+snippet div
+<div className="">
+$1
+</div>
+endsnippet
+
+snippet ma
+R.map(
+	(item) => {
+		${2}
+	},
+	${1:array}
+)
+endsnippet
+
+snippet red
+R.reduce(
+	(acc, item) => {
+		${3}
+	},
+	${1:acc},
+	${2:array}
+)
+endsnippet
+
+snippet rif
+R.ifElse(
+	${2:() => },
+	${3:() => },
+	${4:() => },
+)(${1})
+endsnippet
+
+snippet va
+R.values(${1})
+endsnippet
+
+snippet keys
+R.keys(${1})
+endsnippet
+
+snippet assoc
+R.assoc(${1:key}, ${2:value}, ${3:object})
+endsnippet
+
+snippet cond
+R.cond([
+	[${2}, ${3:() =>}],
+	[${4}, ${5:() =>}],
+	[R.always, ${4}]
+)(${1})
+endsnippet
+
+snippet len
+R.length(${1})
+endsnippet
+
+snippet fir
+R.first(${1})
+endsnippet
+
+snippet las
+R.last(${1})
+endsnippet
+
+snippet init
+R.init(${1})
+endsnippet
+
+snippet head
+R.head(${1})
+endsnippet
+
+snippet tail
+R.tail(${1})
+endsnippet
+
+snippet p
+console.log($1)
+endsnippet
+
+snippet imp
+import { useState } from "react";
+endsnipper

@@ -1,0 +1,3 @@
+#!/bin/sh
+cd $HOME/workspace/gitoflife/reports/
+fd --type file --follow --hidden --exclude .git | fzf --preview 'cd $HOME/workspace/gitoflife/reports/ && bat --color=always --style==numbers --line-range=:500 {}' --preview-window=down
