@@ -75,7 +75,6 @@ bindsym $mod+d exec --no-startup-id fish -c 'rofi -show run'
 bindsym $mod+i exec --no-startup-id fish -c 'task context inbox && rofi -modi tasks:rofi-taskwarrior -show tasks -matching fuzzy'
 bindsym $mod+shift+f exec --no-startup-id /usr/sbin/rofi -show file-browser-extended  -file-browser-depth 10 -file-browser-dir ~/
 bindsym $mod+ctrl+v exec --no-startup-id ~/.config/bin/rofigreenclip
-bindsym $mod+period exec --no-startup-id ~/.config/bin/rofigreenclip
 
 
 # To figure out the `.` keycode, i need to run

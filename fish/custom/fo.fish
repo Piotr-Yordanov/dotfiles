@@ -5,6 +5,8 @@ function fo
         nvim $file
     else if string match -q "*.md" $file
         nvim $file
+    else if string match -q "*.ts" $file
+        nvim $file
     else
         rifle $file
     end
