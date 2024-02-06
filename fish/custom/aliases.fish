@@ -137,7 +137,7 @@ alias fan-cool="sudo smbios-thermal-ctl --set-thermal-mode cool-bottom"
 alias fan="sudo sensors | grep Fan"
 
 alias nord="sudo nordvpn"
-alias docker="sudo docker"
+# alias docker="sudo docker"
 alias dim='docker image'
 alias dsa='docker stop $(docker ps -aq)'
 alias drma='docker rm $(docker ps -aq)'

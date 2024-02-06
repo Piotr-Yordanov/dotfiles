@@ -254,7 +254,7 @@ exec --no-startup-id $HOME/.config/bin/common
 # exec --no-startup-id fish -c discord
 exec --no-startup-id warpd
 exec --no-startup-id keepassxc
-exec --no-startup-id fish -c google-chrome-stable
+exec --no-startup-id fish -c google-chrome-stable --force-device-scale-factor=1.5
 #
 # exec --no-startup-id alacritty -t 'tt_alacritty' -e taskwarrior-tui
 # assign [class="Alacritty" title="tt_alacritty"] $7

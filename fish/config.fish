@@ -69,5 +69,5 @@ export YTFZF_SYSTEM_ADDON_DIR=/home/alpha/.config/ytfzf/addons
 oh-my-posh init fish --config '~/.config/fish/oh-my-posh/pure.simple.omp.json' | source
 
 export ROOTLESSKIT_PARENT_EUID=$(id -u)
-
+export ROOTLESSKIT_PARENT_GID=$(id -g)
 export WINEPREFIX=/home/alpha/.wine
