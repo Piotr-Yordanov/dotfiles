@@ -81,10 +81,9 @@ end
 # development
 alias ni="pnpm install"
 alias na="pnpm add"
-alias ns="npm start"
-alias nd="npm run dev"
-alias nt="npm test"
-alias ni="npm install"
+alias ns="pnpm start"
+alias nd="pnpm run dev"
+alias nt="pnpm test"
 
 # ps
 alias psa="ps aux"

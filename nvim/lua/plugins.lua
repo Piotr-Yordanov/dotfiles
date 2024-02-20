@@ -59,10 +59,7 @@ function M.setup()
     -- FZF
     use 'ibhagwan/fzf-lua'
     use 'nvim-lualine/lualine.nvim'
-    use {'folke/which-key.nvim', config = function()
-      require'which-key'.setup()
-    end}
-
+    use 'folke/which-key.nvim'
     use 'petertriho/nvim-scrollbar'
 
     use({
@@ -118,7 +115,7 @@ function M.setup()
     use 'haya14busa/vim-asterisk'
     use 'elkowar/yuck.vim'
 
-    use {'neoclide/coc.nvim', branch = 'release'}
+    -- use {'neoclide/coc.nvim', branch = 'release'}
 
     use 'rupurt/vim-mql5'
     use 'duane9/nvim-rg'
@@ -173,25 +170,18 @@ function M.setup()
     -- For sexy writing and Zettlekasten
     -- use "folke/zen-mode.nvim"
     use 'folke/twilight.nvim'
-    use({
-      "Pocco81/true-zen.nvim",
-      config = function()
-         require("true-zen").setup {
-         }
-      end,
-    })
+    use "Pocco81/true-zen.nvim"
 
     -- Syntax languages
-    use 'euclidianAce/BetterLua.vim'
-    use 'khaveesh/vim-fish-syntax'
-    use 'SidOfc/mkdx'
-    use "steelsojka/headwind.nvim"
+    -- use 'euclidianAce/BetterLua.vim'
+    -- use 'khaveesh/vim-fish-syntax'
+    -- use 'SidOfc/mkdx'
+    -- use "steelsojka/headwind.nvim"
+    -- use 'mboughaba/i3config.vim'
 
-    use 'mboughaba/i3config.vim'
-
+    -- Tools
     use { 'luk400/vim-jukit' }
 
-    use 'lgalke/vim-ernest'
 
     if packer_bootstrap then
       print "Restart Neovim required after installation!"

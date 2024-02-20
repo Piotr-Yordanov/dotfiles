@@ -13,6 +13,8 @@ require('nvim-autopairs').setup({
 
 require('telescope').load_extension('media_files')
 
+require'which-key'.setup()
+
 
 require 'config.bufferline'
 require 'config.lualine'

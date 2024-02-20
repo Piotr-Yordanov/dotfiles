@@ -74,11 +74,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["BetterLua.vim"] = {
-    loaded = true,
-    path = "/home/alpha/.local/share/nvim/site/pack/packer/start/BetterLua.vim",
-    url = "https://github.com/euclidianAce/BetterLua.vim"
-  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/home/alpha/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
@@ -88,11 +83,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/alpha/.local/share/nvim/site/pack/packer/start/calendar-vim",
     url = "https://github.com/renerocksai/calendar-vim"
-  },
-  ["coc.nvim"] = {
-    loaded = true,
-    path = "/home/alpha/.local/share/nvim/site/pack/packer/start/coc.nvim",
-    url = "https://github.com/neoclide/coc.nvim"
   },
   ["copilot.vim"] = {
     loaded = true,
@@ -119,20 +109,10 @@ _G.packer_plugins = {
     path = "/home/alpha/.local/share/nvim/site/pack/packer/start/gruvbox",
     url = "https://github.com/morhetz/gruvbox"
   },
-  ["headwind.nvim"] = {
-    loaded = true,
-    path = "/home/alpha/.local/share/nvim/site/pack/packer/start/headwind.nvim",
-    url = "https://github.com/steelsojka/headwind.nvim"
-  },
   ["hop.nvim"] = {
     loaded = true,
     path = "/home/alpha/.local/share/nvim/site/pack/packer/start/hop.nvim",
     url = "https://github.com/phaazon/hop.nvim"
-  },
-  ["i3config.vim"] = {
-    loaded = true,
-    path = "/home/alpha/.local/share/nvim/site/pack/packer/start/i3config.vim",
-    url = "https://github.com/mboughaba/i3config.vim"
   },
   ["impatient.nvim"] = {
     loaded = true,
@@ -153,11 +133,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/alpha/.local/share/nvim/site/pack/packer/start/mini.nvim",
     url = "https://github.com/echasnovski/mini.nvim"
-  },
-  mkdx = {
-    loaded = true,
-    path = "/home/alpha/.local/share/nvim/site/pack/packer/start/mkdx",
-    url = "https://github.com/SidOfc/mkdx"
   },
   ["neoscroll.nvim"] = {
     loaded = true,
@@ -270,7 +245,6 @@ _G.packer_plugins = {
     url = "https://github.com/mcauley-penney/tidy.nvim"
   },
   ["true-zen.nvim"] = {
-    config = { "\27LJ\2\n:\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\rtrue-zen\frequire\0" },
     loaded = true,
     path = "/home/alpha/.local/share/nvim/site/pack/packer/start/true-zen.nvim",
     url = "https://github.com/Pocco81/true-zen.nvim"
@@ -304,16 +278,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/alpha/.local/share/nvim/site/pack/packer/start/vim-easy-align",
     url = "https://github.com/junegunn/vim-easy-align"
-  },
-  ["vim-ernest"] = {
-    loaded = true,
-    path = "/home/alpha/.local/share/nvim/site/pack/packer/start/vim-ernest",
-    url = "https://github.com/lgalke/vim-ernest"
-  },
-  ["vim-fish-syntax"] = {
-    loaded = true,
-    path = "/home/alpha/.local/share/nvim/site/pack/packer/start/vim-fish-syntax",
-    url = "https://github.com/khaveesh/vim-fish-syntax"
   },
   ["vim-jukit"] = {
     loaded = true,
@@ -375,13 +339,7 @@ _G.packer_plugins = {
     path = "/home/alpha/.local/share/nvim/site/pack/packer/start/vimwiki",
     url = "https://github.com/vimwiki/vimwiki"
   },
-  ["vscode.nvim"] = {
-    loaded = true,
-    path = "/home/alpha/.local/share/nvim/site/pack/packer/start/vscode.nvim",
-    url = "https://github.com/Mofiqul/vscode.nvim"
-  },
   ["which-key.nvim"] = {
-    config = { "\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14which-key\frequire\0" },
     loaded = true,
     path = "/home/alpha/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
@@ -404,14 +362,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: true-zen.nvim
-time([[Config for true-zen.nvim]], true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\rtrue-zen\frequire\0", "config", "true-zen.nvim")
-time([[Config for true-zen.nvim]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
-time([[Config for which-key.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
