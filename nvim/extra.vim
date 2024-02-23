@@ -179,3 +179,7 @@ nnoremap <Leader>o :call OpenWithRifle()<CR>
 nnoremap <Leader>y :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+
+
+" let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/custom_snippets'] 

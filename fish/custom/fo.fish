@@ -1,15 +1,16 @@
 function fo
   set file (fd --type file --follow --hidden --exclude .git | fzf --preview 'bat --color=always --line-range=:500 {}')
   if test "$file" != ''
-    if string match -q "*.tsx" $file
-        nvim $file
-    else if string match -q "*.md" $file
-        nvim $file
-    else if string match -q "*.ts" $file
-        nvim $file
-    else
-        rifle $file
-    end
+    rifle $file
+    # if string match -q "*.tsx" $file
+    #     nvim $file
+    # else if string match -q "*.md" $file
+    #     nvim $file
+    # else if string match -q "*.ts" $file
+    #     nvim $file
+    # else
+    #     rifle $file
+    # end
   end
 end
 

@@ -54,6 +54,7 @@ nmap('<space>w', ":HopChar2<CR>")
 nmap('<space>s', ":HopWord<CR>")
 nmap('<space>j', ":HopLineAC<CR>")
 nmap('<space>k', ":HopLineBC<CR>")
+nmap('gd', ":Telescope lsp_definitions<CR>")
 
 -- MKDX
 nmap('<c-x>', '<Plug>(mkdx-checkbox-next-n)')

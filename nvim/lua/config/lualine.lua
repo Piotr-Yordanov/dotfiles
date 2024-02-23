@@ -52,6 +52,8 @@ require('lualine').setup {
         -- or nil on failure. count <= 0 won't be displayed.
       }
     },
+
+    lualine_x = { 'copilot' ,'encoding', 'fileformat', 'filetype' }, -- I added copilot here
     lualine_z = {'location', { getWords }},
   }
 }

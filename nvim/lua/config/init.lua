@@ -11,50 +11,71 @@ require('nvim-autopairs').setup({
   disable_filetype = { "TelescopePrompt" , "vim" },
 })
 
-require('telescope').load_extension('media_files')
 
 require'which-key'.setup()
 
 
 require 'config.bufferline'
 require 'config.lualine'
-require 'config.coc'
+-- require 'config.coc'
 require 'config.packageinfo'
 require 'config.wilder'
 require 'config.fzflua'
 require 'config.gitsigns'
-require 'config.vista'
 require 'config.blamer'
 require 'config.nvim-tree'
 require 'config.hlslens'
 require 'config.zenmode'
 require 'config.neoscroll'
-require 'config.telekasten'
+require 'config.telescope'
+require 'config.twilight'
+require 'config.cmp'
 
 
 
-require("twilight").setup({
-  context = 0,
-  expand = {
-    -- markdown
-    "paragraph",
-    "fenced_code_block",
-    "list",
-  }
-})
+-- Lua
+----
 
--- require 'config.copilot'
--- require("mason").setup()
--- require("mason-lspconfig").setup()
--- require 'config.cmp'
--- require 'config.prettier'
-require("onedarkpro").setup({
-  highlights = {
-    Comment = { italic = true },
-    Directory = { bold = true },
-    ErrorMsg = { italic = true, bold = true }
-  },
-  filetypes = {
-    all = true
-  }
-})
+
+
+
+-- LSP Config
+local status, nvim_lsp = pcall(require, "lspconfig")
+if (not status) then return end
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+-- Java
+nvim_lsp.jdtls.setup {
+  ensure_installed = { 'jdtls'},
+  on_attach = on_attach,
+  filetypes = { "java" },
+  cmd = { "jdtls", "--stdio" },
+  capabilities = capabilities
+}
+
+-- TypeScript
+nvim_lsp.tsserver.setup {
+  ensure_installed = { 'tsserver'},
+  on_attach = on_attach,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  cmd = { "typescript-language-server", "--stdio" },
+  capabilities = capabilities
+}
+
+-- Tailwind
+nvim_lsp.tailwindcss.setup {
+  ensure_installed = { 'tailwindcss'},
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+}
+
+-- Python
+nvim_lsp.pyright.setup {
+  filetypes = { "python" },
+}
+
+-- LSP Config
+
+require 'config.treesitter'
+
+

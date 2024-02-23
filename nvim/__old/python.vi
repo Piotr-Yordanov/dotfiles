@@ -1,3 +1,0 @@
-autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
-autocmd FileType python let g:ale_linters = { 'python': ['pyright'] }
-autocmd FileType python let g:ale_fixers = { 'python': ['pyright'] }
