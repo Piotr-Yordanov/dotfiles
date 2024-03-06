@@ -144,6 +144,7 @@ alias drmia='docker rmi -f $(docker images -q)'
 alias m="make"
 alias mr="make run"
 alias mb="make build"
+alias mw="make backtest"
 alias ms="make shell"
 
 alias vnn="vncviewer -passwd ~/workspace/rocket-bot/MT5-Docker/assets/vnc/passwd localhost:5900"

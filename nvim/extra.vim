@@ -93,8 +93,6 @@ aug end
 " set iskeyword-=_
 "
 
-" Jukit
-let g:jukit_mappings_ext_enabled = ["py", "ipynb"]
 
 
 " VimWIKI
@@ -183,3 +181,5 @@ nnoremap <Leader>y :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
 
 
 " let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/custom_snippets'] 
+" Jukit
+" let g:jukit_mappings_ext_enabled = ["py", "ipynb"]

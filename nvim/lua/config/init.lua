@@ -11,9 +11,7 @@ require('nvim-autopairs').setup({
   disable_filetype = { "TelescopePrompt" , "vim" },
 })
 
-
 require'which-key'.setup()
-
 
 require 'config.bufferline'
 require 'config.lualine'
@@ -29,53 +27,9 @@ require 'config.zenmode'
 require 'config.neoscroll'
 require 'config.telescope'
 require 'config.twilight'
+require 'config.lsp'
 require 'config.cmp'
-
-
-
--- Lua
-----
-
-
-
+require 'config.prettier'
 
 -- LSP Config
-local status, nvim_lsp = pcall(require, "lspconfig")
-if (not status) then return end
-
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
--- Java
-nvim_lsp.jdtls.setup {
-  ensure_installed = { 'jdtls'},
-  on_attach = on_attach,
-  filetypes = { "java" },
-  cmd = { "jdtls", "--stdio" },
-  capabilities = capabilities
-}
-
--- TypeScript
-nvim_lsp.tsserver.setup {
-  ensure_installed = { 'tsserver'},
-  on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-  cmd = { "typescript-language-server", "--stdio" },
-  capabilities = capabilities
-}
-
--- Tailwind
-nvim_lsp.tailwindcss.setup {
-  ensure_installed = { 'tailwindcss'},
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-}
-
--- Python
-nvim_lsp.pyright.setup {
-  filetypes = { "python" },
-}
-
--- LSP Config
-
 require 'config.treesitter'
-
-

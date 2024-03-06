@@ -50,6 +50,7 @@ prettier.setup({
     "typescript",
     "typescriptreact",
     "yaml",
+    "java"
   },
 })
 -- Prettier

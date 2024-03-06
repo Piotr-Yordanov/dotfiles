@@ -1,10 +1,9 @@
 require("mason").setup()
-require 'config.prettier'
 
 --- CMP
 local cmp = require'cmp'
 local lspkind = require('lspkind')
-local MAX_ITEMS = 4
+local MAX_ITEMS = 6
 
 
 local kind_icons = {
@@ -41,12 +40,6 @@ cmp.setup({
       vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
     end,
   },
-  performance = {
-    debounce = 0,
-    throttle = 0,
-    fetching_timeout = 100,
-    max_view_entries = 20,
-  },
   view = {
     docs = {
       auto_open = true,
@@ -60,10 +53,10 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   }),
   sources = cmp.config.sources({
-    {name = "copilot", group_index = 1, max_item_count = MAX_ITEMS},
-    {name = 'ultisnips', max_item_count = MAX_ITEMS }, -- For ultisnips users.
-    {name = 'path', group_index = 2, max_item_count = MAX_ITEMS},
     {name = 'nvim_lsp', group_index = 2, max_item_count = MAX_ITEMS4 },
+    {name = "copilot", group_index = 2, max_item_count = MAX_ITEMS},
+    -- -- {name = 'ultisnips', max_item_count = MAX_ITEMS }, -- For ultisnips users.
+    {name = 'path', group_index = 2, max_item_count = MAX_ITEMS},
     {name = 'buffer', group_index = 2, max_item_count = MAX_ITEMS4 },
     {name = 'treesitter', group_index = 2, max_item_count = MAX_ITEMS4 },
   }),
@@ -124,7 +117,6 @@ cmp.setup.filetype('gitcommit', {
     { name = 'buffer' },
   })
 })
-
 
 
 
