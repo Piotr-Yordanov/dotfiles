@@ -11,24 +11,27 @@ require('nvim-autopairs').setup({
   disable_filetype = { "TelescopePrompt" , "vim" },
 })
 
-require('telescope').load_extension('media_files')
-
+require'which-key'.setup()
 
 require 'config.bufferline'
 require 'config.lualine'
-require 'config.coc'
+-- require 'config.coc'
 require 'config.packageinfo'
 require 'config.wilder'
 require 'config.fzflua'
 require 'config.gitsigns'
-require 'config.vista'
 require 'config.blamer'
 require 'config.nvim-tree'
 require 'config.hlslens'
 require 'config.zenmode'
 require 'config.neoscroll'
-require 'config.telekasten'
+require 'config.telescope'
+require 'config.twilight'
+require 'config.lsp'
+require 'config.cmp'
+require 'config.prettier'
 
+<<<<<<< HEAD
 
 
 require("twilight").setup({
@@ -106,3 +109,7 @@ require('CopilotChat').setup({
   },
 })
 
+=======
+-- LSP Config
+require 'config.treesitter'
+>>>>>>> bc0b0f84ee6453dd9abd5c23ed66c894dbb48f48

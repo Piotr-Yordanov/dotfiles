@@ -1,4 +1,3 @@
-set termguicolors
 set background=dark
 highlight clear SignColumn
 hi Normal                guibg = #1d1f21
@@ -70,8 +69,6 @@ hi! MiniIndentscopeSymbol guifg=#343434
 
 " highlight Tabline guibg= inherit
 
-" Color of mini indent scope
-highlight VertSplit guibg=#40452a guifg=#1d1f21
 
 
 
@@ -90,3 +87,30 @@ map gm :call SynStack()<CR>
 " For displaying colors inline
 let g:Hexokinase_highlighters = ['foregroundfull']
 highlight Folded ctermbg=235 guibg=#303030
+
+
+
+" NVIM_CMP
+
+" Color of mini indent scope
+" highlight VertSplit guibg=#569CD6 guifg=#1d1f21
+" gray
+highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
+" blue
+highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
+highlight! link CmpItemAbbrMatchFuzzy CmpItemAbbrMatch
+" light blue
+highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
+highlight! link CmpItemKindInterface CmpItemKindVariable
+highlight! link CmpItemKindText CmpItemKindVariable
+" pink
+highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
+highlight! link CmpItemKindMethod CmpItemKindFunction
+" front
+highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
+highlight! link CmpItemKindProperty CmpItemKindKeyword
+highlight! link CmpItemKindUnit CmpItemKindKeyword
+
+
+
+

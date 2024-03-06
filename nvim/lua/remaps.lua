@@ -6,12 +6,12 @@ function nmap(shortcut, command)
   map('n', shortcut, command)
 end
 
-nmap('<leader>w', ':w<CR>')
+nmap('<leader>w', ':Prettier<CR>:w<CR>')
 nmap('<leader>so', ':runtime! lua/*.lua<CR>:runtime! lua/config/init.lua<CR>')
 nmap('<leader>pp', ':PackerInstall<CR>')
 nmap('<leader>pc', ':PackerClean<CR>')
 
-nmap('<leader>q', 'q')
+nmap('<leader>q', ':TroubleClose<CR>:q!<CR>')
 -- nmap('q', ':w<CR>:bwipeout!<CR>')
 nmap('q', ':bwipeout!<CR>')
 nmap('<c-z>', ":redo<CR>")
@@ -54,6 +54,7 @@ nmap('<space>w', ":HopChar2<CR>")
 nmap('<space>s', ":HopWord<CR>")
 nmap('<space>j', ":HopLineAC<CR>")
 nmap('<space>k', ":HopLineBC<CR>")
+nmap('gd', ":Telescope lsp_definitions<CR>")
 
 -- MKDX
 nmap('<c-x>', '<Plug>(mkdx-checkbox-next-n)')
@@ -66,3 +67,10 @@ nmap('<leader><space>', ":w<CR>:call jukit#splits#output()<cr>:call jukit#send#s
 
 -- Zen Mode
 nmap('<leader>ng', ":Twilight<CR>:TZAtaraxis<CR>:set wrap<CR>:ScrollbarToggle<CR>")
+
+nmap('<space>t', ":TroubleToggle<CR>")
+
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
