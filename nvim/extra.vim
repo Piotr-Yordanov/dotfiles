@@ -179,3 +179,13 @@ nnoremap <Leader>o :call OpenWithRifle()<CR>
 nnoremap <Leader>y :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+
+
+
+
+nnoremap <leader>ccb <cmd>CopilotChatBuffer<cr>
+nnoremap <leader>cce <cmd>CopilotChatExplain<cr>
+nnoremap <leader>cct <cmd>CopilotChatTests<cr>
+xnoremap <leader>ccv :CopilotChatVisual<cr>
+xnoremap <leader>ccx :CopilotChatInPlace<cr>

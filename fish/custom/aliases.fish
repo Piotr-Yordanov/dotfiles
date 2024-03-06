@@ -40,6 +40,7 @@ alias cdw="cd $HOME/warehouse"
 
 # apps
 alias v='nvim'
+alias lv="~/.local/bin/lvim"
 
 alias a="begin; alias; functions; end | fzf -i --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 alias f="vim -c 'History'"
@@ -81,10 +82,9 @@ end
 # development
 alias ni="pnpm install"
 alias na="pnpm add"
-alias ns="npm start"
-alias nd="npm run dev"
-alias nt="npm test"
-alias ni="npm install"
+alias ns="pnpm start"
+alias nd="pnpm run dev"
+alias nt="pnpm test"
 
 # ps
 alias psa="ps aux"
@@ -115,7 +115,7 @@ alias vpw="nvim ~/warehouse/vimwiki/__weekly.md"
 alias vpi="nvim ~/warehouse/vimwiki/index.md"
 
 # Youtube-dl
-alias yt="yt-dlp --extract-audio --embed-thumbnail"
+alias yt="yt-dlp --extract-audio --embed-thumbnail --ffmpeg-location /usr/bin/ffmpeg"
 alias untar="tar -zxvf "
 
 # Personal
@@ -137,14 +137,16 @@ alias fan-cool="sudo smbios-thermal-ctl --set-thermal-mode cool-bottom"
 alias fan="sudo sensors | grep Fan"
 
 alias nord="sudo nordvpn"
-alias docker="sudo docker"
+# alias docker="sudo docker"
 alias dim='docker image'
 alias dsa='docker stop $(docker ps -aq)'
 alias drma='docker rm $(docker ps -aq)'
+alias drmna='docker network ls --filter "type=custom" -q | xargs -r docker network rm'
 alias drmia='docker rmi -f $(docker images -q)'
 alias m="make"
 alias mr="make run"
 alias mb="make build"
+alias mw="make backtest"
 alias ms="make shell"
 
 alias vnn="vncviewer -passwd ~/workspace/rocket-bot/MT5-Docker/assets/vnc/passwd localhost:5900"
@@ -164,3 +166,4 @@ alias te="poetry run pytest"
 alias nc="ncmpcpp"
 
 alias davinci="/opt/resolve/bin/resolve"
+

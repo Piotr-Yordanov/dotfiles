@@ -192,6 +192,8 @@ function M.setup()
     use { 'luk400/vim-jukit' }
 
     use 'lgalke/vim-ernest'
+    
+    use "CopilotC-Nvim/CopilotChat.nvim"
 
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
