@@ -1,0 +1,4 @@
+#!/usr/bin/fish
+## Polybar
+killall polybar
+nohup $HOME/.config/polybar/launch.sh --grayblocks  </dev/null >/tmp/nohup.out 2>/tmp/nohup.err &

@@ -1,25 +1,24 @@
 function vpe --description "Create new evergreen note"
   touch ~/warehouse/vimwiki/evergreen/$argv.md
   echo tte >> ~/warehouse/vimwiki/evergreen/$argv.md
-  nvim ~/warehouse/vimwiki/evergreen/$argv.md
+  lv ~/warehouse/vimwiki/evergreen/$argv.md
 end
 
 function vpp --description "Create new project"
   touch ~/warehouse/vimwiki/projects/$argv.md
   echo t >> ~/warehouse/vimwiki/projects/$argv.md
-  nvim ~/warehouse/vimwiki/projects/$argv.md
+  lv ~/warehouse/vimwiki/projects/$argv.md
 end
 
 function vpi --description "Create new project"
   touch ~/warehouse/vimwiki/inbox/$argv.md
   echo ti >> ~/warehouse/vimwiki/inbox/$argv.md
-  nvim ~/warehouse/vimwiki/inbox/$argv.md
+  vpi ~/warehouse/vimwiki/inbox/$argv.md
 end
 
 
 function vvv
     #!/usr/bin/fish
-
     set search_directory ~/warehouse/vimwiki/projects
 
     # Use the find command to locate Markdown files

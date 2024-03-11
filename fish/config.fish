@@ -30,7 +30,7 @@ set -Ua fish_user_paths $HOME/.config/bin/fzf
 set -Ua fish_user_paths $HOME/.poetry/bin
 set -Ua fish_user_paths $PYENV_ROOT/bin
 
-export EDITOR=nvim
+export EDITOR=lvim
 
 # xdg-mime default nvim.desktop text/plain
 # xdg-settings set default-web-browser qutebrowser.desktop

@@ -17,7 +17,7 @@ end
 function fk
   set file (find ~/.config -type f | fzf --preview 'bat --color=always --line-range=:500 {}')
   if test "$file" != ''
-    nvim $file
+    rifle $file
   end
 end
 

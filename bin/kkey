@@ -1,3 +1,3 @@
 #!/usr/bin/fish
 xset r rate 270 70
-setxkbmap -option swapcaps:ctrl
+setxkbmap -option ctrl:swapcaps

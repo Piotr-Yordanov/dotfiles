@@ -39,8 +39,8 @@ alias CD="cd $HOME/warehouse"
 alias cdw="cd $HOME/warehouse"
 
 # apps
-alias v='nvim'
-alias lv="~/.local/bin/lvim"
+alias v="~/.local/bin/lvim"
+alias nv='nvim'
 
 alias a="begin; alias; functions; end | fzf -i --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 alias f="vim -c 'History'"
