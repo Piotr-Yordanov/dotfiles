@@ -31,37 +31,9 @@ require 'config.lsp'
 require 'config.cmp'
 require 'config.prettier'
 
-<<<<<<< HEAD
 
 
-require("twilight").setup({
-  context = 0,
-  expand = {
-    -- markdown
-    "paragraph",
-    "fenced_code_block",
-    "list",
-  }
-})
 
--- require 'config.copilot'
--- require("mason").setup()
--- require("mason-lspconfig").setup()
--- require 'config.cmp'
--- require 'config.prettier'
-require("onedarkpro").setup({
-  highlights = {
-    Comment = { italic = true },
-    Directory = { bold = true },
-    ErrorMsg = { italic = true, bold = true }
-  },
-  filetypes = {
-    all = true
-  }
-})
-
-
-    
 require('CopilotChat').setup({
   opts = {
     show_help = "yes", -- Show help text for CopilotChatInPlace, default: yes
@@ -109,7 +81,5 @@ require('CopilotChat').setup({
   },
 })
 
-=======
 -- LSP Config
 require 'config.treesitter'
->>>>>>> bc0b0f84ee6453dd9abd5c23ed66c894dbb48f48

@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-c = get_config()
-=======
-# Configuration file for ipython.
-
 c = get_config()  # noqa
 
 # ------------------------------------------------------------------------------
@@ -1329,6 +1324,5 @@ c = get_config()  # noqa
 #  Default: False
 # c.StoreMagics.autorestore = False
 
->>>>>>> bc0b0f84ee6453dd9abd5c23ed66c894dbb48f48
 c.InteractiveShellApp.extensions = ["autoreload"]
 c.InteractiveShellApp.exec_lines = ["%autoreload 2"]

@@ -1,0 +1,25 @@
+{
+  "div": {
+    "prefix": "div",
+    "body": [
+      "<div className=\"\">",
+      "\t${1}",
+      "</div>"
+    ],
+    "description": "print Hello, World!"
+  },
+  "cl": {
+    "prefix": "cl",
+    "body": [
+      "console.log(${1})"
+    ],
+    "description": "print Hello, World!"
+  },
+  "=": {
+    "prefix": "=",
+    "body": [
+      "console.log('==========================)"
+    ],
+    "description": "print Hello, World!"
+  }
+}
