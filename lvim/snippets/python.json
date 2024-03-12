@@ -1,0 +1,61 @@
+{
+  "=": {
+    "prefix": "=",
+    "body": [
+      "print('==========')"
+    ],
+    "description": "Print separator"
+  },
+  "cl": {
+    "prefix": "cl",
+    "body": [
+      "print($1)"
+    ],
+    "description": "Print statement"
+  },
+  "log": {
+    "prefix": "log",
+    "body": [
+      "self.log($1)"
+    ],
+    "description": "Log statement"
+  },
+  "len": {
+    "prefix": "len",
+    "body": [
+      "len($1)"
+    ],
+    "description": "Length function"
+  },
+  "forr": {
+    "prefix": "forr",
+    "body": [
+      "for $1 in range($2)"
+    ],
+    "description": "For loop with range"
+  },
+  "pld": {
+    "prefix": "pld",
+    "body": [
+      "#pylint: disable-all"
+    ],
+    "description": "Pylint disable all"
+  },
+  "imp": {
+    "prefix": "imp",
+    "body": [
+      "from helpers.Logger import print, log"
+    ],
+    "description": "Import Logger"
+  },
+  "try": {
+    "prefix": "try",
+    "body": [
+      "try:",
+      "\t#1",
+      "except Exception as e:",
+      "\t\tprint(e)"
+    ],
+    "description": "Try-except block"
+  }
+}

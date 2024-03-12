@@ -1,11 +1,11 @@
 vim.g.jukit_mappings_ext_enabled = "0"
+vim.g.vimwiki_map_prefix = "<leader>W"
 require('plugins')
 require('settings')
 require('theme')
 require('remaps')
 require('config')
 
-vim.cmd 'runtime! extra.vim'
 
 vim.o.updatetime = 250
 vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -36,3 +36,5 @@ vim.diagnostic.config({
     source = "always", -- Or "if_many"
   },
 })
+
+vim.cmd 'runtime! extra.vim'

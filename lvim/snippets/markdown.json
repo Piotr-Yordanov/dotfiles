@@ -1,0 +1,79 @@
+{
+  "tt": {
+    "prefix": "tt",
+    "body": [
+      "---",
+      "tags: [project, $1]",
+      "---",
+      "= `!p snip.rv = snip.basename` =",
+      "== $2 | status:pending +${1|office,home,computer|} project:$2 ==",
+      "* $3"
+    ],
+    "description": "Project tag"
+  },
+  "to": {
+    "prefix": "to",
+    "body": [
+      "---",
+      "tags: [project, office]",
+      "---",
+      "= `!p snip.rv = snip.basename` =",
+      "== $2 | status:pending +office project:$2 ==",
+      "* $3"
+    ],
+    "description": "Office project tag"
+  },
+  "th": {
+    "prefix": "th",
+    "body": [
+      "---",
+      "tags: [project, home]",
+      "---",
+      "= `!p snip.rv = snip.basename` =",
+      "== $2 | status:pending +home project:$2 ==",
+      "* $3"
+    ],
+    "description": "Home project tag"
+  },
+  "tag": {
+    "prefix": "tag",
+    "body": [
+      "---",
+      "tags: [project]",
+      "---",
+      "= `!p snip.rv = snip.basename` ="
+    ],
+    "description": "Project tag"
+  },
+  "tte": {
+    "prefix": "tte",
+    "body": [
+      "---",
+      "tags: [evergreen, $1]",
+      "---",
+      "= `!p snip.rv = snip.basename` =",
+      "$2"
+    ],
+    "description": "Evergreen tag"
+  },
+  "ti": {
+    "prefix": "ti",
+    "body": [
+      "---",
+      "tags: [inbox]",
+      "---",
+      "= `!p snip.rv = snip.basename` =",
+      "$1"
+    ],
+    "description": "Inbox tag"
+  },
+  "tw": {
+    "prefix": "tw",
+    "body": [
+      "= __waiting_for || status:pending +waiting_for =",
+      "== $2 | project:$2 ==",
+      "* $3"
+    ],
+    "description": "Waiting for tag"
+  }
+}

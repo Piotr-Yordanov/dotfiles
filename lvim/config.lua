@@ -2,7 +2,15 @@
 -- Video Tutorials: https://www.youtube.com/watch?v=sFA9kX-Ud_c&list=PLhoH5vyxr6QqGu0i7tt_XoVK9v-KvZ3m6
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
-vim.g.jukit_mappings_ext_enabled   = "0"
+vim.g.jukit_mappings_ext_enabled = "0"
+vim.g.vimwiki_map_prefix         = "<leader>W"
+vim.cmd [[
+  let g:vimwiki_map_prefix = '<Leader>W'
+  let g:vimwiki_ext2syntax = {'.md': 'markdown'}
+  set foldmethod=manual
+  " let taskwiki_disable_concealcursor="yes"
+  " let vimwiki_conceallevel = 1
+]]
 lvim.leader                        = ","
 lvim.builtin.terminal.open_mapping = "<c-t>"
 
@@ -227,11 +235,11 @@ lvim.autocommands = {
         vim.api.nvim_set_hl(0, "TelescopeSelection", { fg = "#D4D4D4" })
         vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = "#C586C0" })
         vim.api.nvim_set_hl(0, "jukit_cellmarker_colors", { fg = "#1d615a", bg = "#1d615a" })
-        vim.api.nvim_set_hl(0, "IlluminatedWord", { bg = "#4c4c4c" })
-        vim.api.nvim_set_hl(0, "IlluminatedCurWord", { bg = "#4c4c4c" })
-        vim.api.nvim_set_hl(0, "IlluminatedWordText", { bg = "#4c4c4c" })
-        vim.api.nvim_set_hl(0, "IlluminatedWordRead", { bg = "#4c4c4c" })
-        vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { bg = "#4c4c4c" })
+        vim.api.nvim_set_hl(0, "IlluminatedWord", { bg = "#3c3c3c" })
+        vim.api.nvim_set_hl(0, "IlluminatedCurWord", { bg = "#3c3c3c" })
+        vim.api.nvim_set_hl(0, "IlluminatedWordText", { bg = "#3c3c3c" })
+        vim.api.nvim_set_hl(0, "IlluminatedWordRead", { bg = "#3c3c3c" })
+        vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { bg = "#3c3c3c" })
       end,
     },
   },
@@ -396,4 +404,7 @@ lvim.builtin.which_key.mappings['c'] = {}
 lvim.builtin.which_key.mappings['/'] = {}
 
 
-vim.cmd 'runtime! extra.vim'
+
+vim.opt.foldmethod = "expr"                       -- default is "normal"
+vim.opt.foldexpr   = "nvim_treesitter#foldexpr()" -- default is ""
+vim.opt.foldenable = false

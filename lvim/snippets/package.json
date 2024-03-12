@@ -12,6 +12,17 @@
           "typescriptreact"
         ],
         "path": "./typescript.json"
+      },
+      {
+        "language": [
+          "markdown",
+          "vimwiki"
+        ],
+        "path": "./markdown.json"
+      },
+      {
+        "language": "python",
+        "path": "./python.json"
       }
     ]
   }
