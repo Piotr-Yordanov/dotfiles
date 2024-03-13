@@ -136,8 +136,12 @@ alias fan-perf="sudo smbios-thermal-ctl --set-thermal-mode performance"
 alias fan-cool="sudo smbios-thermal-ctl --set-thermal-mode cool-bottom"
 alias fan="sudo sensors | grep Fan"
 
+# Tailscale and other VPN
+alias tsu="sudo tailscale up"
+alias tsd="sudo tailscale down"
 alias nord="sudo nordvpn"
-# alias docker="sudo docker"
+
+# DOcker and built tools
 alias dim='docker image'
 alias dsa='docker stop $(docker ps -aq)'
 alias drma='docker rm $(docker ps -aq)'
@@ -167,3 +171,5 @@ alias nc="ncmpcpp"
 
 alias davinci="/opt/resolve/bin/resolve"
 
+
+alias shut="tsd; nordvpn d; shutdown now"

@@ -1,29 +1,22 @@
 function fo
-  set file (fd --type file --follow --hidden --exclude .git | fzf --preview 'bat --color=always --line-range=:500 {}')
-  if test "$file" != ''
-    rifle $file
-    # if string match -q "*.tsx" $file
-    #     nvim $file
-    # else if string match -q "*.md" $file
-    #     nvim $file
-    # else if string match -q "*.ts" $file
-    #     nvim $file
-    # else
-    #     rifle $file
-    # end
-  end
+  v -c ":Telescope find_files"
+  # set file (fd --type file --follow --hidden --exclude .git | fzf --preview 'bat --color=always --line-range=:500 {}')
+  # if test "$file" != ''
+  #   rifle $file
+  # end
 end
 
 function fk
-  set file (find ~/.config -type f | fzf --preview 'bat --color=always --line-range=:500 {}')
-  if test "$file" != ''
-    rifle $file
-  end
+  v -c "cd ~/.config | Telescope find_files"
+  # set file (find ~/.config -type f | fzf --preview 'bat --color=always --line-range=:500 {}')
+  # if test "$file" != ''
+  #   rifle $file
+  # end
 end
 
 function Fd
 #  set dir (find . -type d -not -path '*/.git*' -not -path '*/node_modules*' -not -path '.git'| fzf +m)
- set dir (fd -I -H -t d | sort -r | fzf)
+ set dir (fd -H -t d | sort -r | fzf)
  if test "$dir" != ''
    cd $dir
  end

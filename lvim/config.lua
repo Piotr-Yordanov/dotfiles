@@ -30,8 +30,12 @@ lvim.plugins = {
       })
     end
   },
-  { "kvrohit/substrata.nvim" },
-  { 'ldelossa/vimdark' },
+  {
+    "petertriho/nvim-scrollbar",
+    config = function()
+      require("scrollbar").setup()
+    end
+  },
   { "logico/typewriter-vim" },
   { 'tomtom/tcomment_vim' },
   {
@@ -52,6 +56,13 @@ lvim.plugins = {
       }
     end
   },
+  {
+    'smoka7/hop.nvim',
+    config = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    end
+  },
   { 'luk400/vim-jukit' },
   {
     "stevearc/dressing.nvim",
@@ -59,19 +70,6 @@ lvim.plugins = {
       require("dressing").setup({
         input = { enabled = false },
       })
-    end,
-  },
-  { "ggandor/leap.nvim" },
-  {
-    "phaazon/hop.nvim",
-    event = "BufRead",
-    config = function()
-      require("hop").setup()
-      -- vim.api.nvim_set_keymap("n", "f", ":HopChar1<cr>", { silent = true })
-      -- vim.api.nvim_set_keymap("n", "<space>w", ":HopChar2<cr>", { silent = true })
-      -- vim.api.nvim_set_keymap("n", "<space>s", ":HopWord<cr>", { silent = true })
-      -- vim.api.nvim_set_keymap("n", "<space>j", ":HopLineAC<cr>", { silent = true })
-      -- vim.api.nvim_set_keymap("n", "<space>k", ":HopLineBC<cr>", { silent = true })
     end,
   },
 
@@ -95,7 +93,7 @@ lvim.plugins = {
           default_direction = "left"
         },
         attach_mode = "global",
-        backends = { "lsp", "treesitter", "markdown", "man" },
+        backends = { "lsp" },
         disable_max_lines = 1000000,
         show_guides = true,
         filter_kind = false,
@@ -107,7 +105,7 @@ lvim.plugins = {
         },
       })
       -- You probably also want to set a keymap to toggle aerial
-      vim.keymap.set("n", "<leader>ao", "<cmd>AerialToggle!<CR>")
+      vim.keymap.set("n", "<leader>E", "<cmd>AerialToggle!<CR>")
       vim.keymap.set("n", "<leader>S", ":lua require('telescope').extensions.aerial.aerial()<CR>")
     end
   },
@@ -123,7 +121,17 @@ lvim.plugins = {
   { 'tpope/vim-repeat' },      -- `.` made awesome
   { 'farmergreg/vim-lastplace' },
 
-
+  {
+    'Exafunction/codeium.vim',
+    -- config = function()
+    --   vim.keymap.set('i', '<C-a>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+    --   vim.keymap.set('i', '<c-q>', function() return vim.fn['codeium#CycleCompletions'](1) end,
+    --     { expr = true, silent = true })
+    --   vim.keymap.set('i', '<c-e>', function() return vim.fn['codeium#CycleCompletions'](-1) end,
+    --     { expr = true, silent = true })
+    --   vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+    -- end
+  },
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
@@ -137,162 +145,133 @@ lvim.plugins = {
       require("telescope").setup(opts)
       require("telescope").load_extension('cmdline')
     end,
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    event = "InsertEnter",
-    dependencies = { "zbirenbaum/copilot.lua" },
-    config = function()
-      vim.defer_fn(function()
-        require("copilot").setup()     -- https://github.com/zbirenbaum/copilot.lua/blob/master/README.md#setup-and-configuration
-        require("copilot_cmp").setup() -- https://github.com/zbirenbaum/copilot-cmp/blob/master/README.md#configuration
-      end, 100)
-    end
-  },
-
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    opts = {
-      show_help = "yes",         -- Show help text for CopilotChatInPlace, default: yes
-      debug = false,             -- Enable or disable debug mode, the log file will be in ~/.local/state/nvim/CopilotChat.nvim.log
-      disable_extra_info = 'no', -- Disable extra information (e.g: system prompt) in the response.
-      language =
-      "English"                  -- Copilot answer language settings when using default prompts. Default language is English.
-      -- proxy = "socks5://127.0.0.1:3000", -- Proxies requests via https or socks.
-      -- temperature = 0.1,
-    },
-    build = function()
-      vim.notify("Please update the remote plugins by running ':UpdateRemotePlugins', then restart Neovim.")
-    end,
-    event = "VeryLazy",
-    keys = {
-      { "<leader>ccb", ":CopilotChatBuffer ",         desc = "CopilotChat - Chat with current buffer" },
-      { "<leader>cce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
-      { "<leader>cct", "<cmd>CopilotChatTests<cr>",   desc = "CopilotChat - Generate tests" },
-      {
-        "<leader>ccT",
-        "<cmd>CopilotChatVsplitToggle<cr>",
-        desc = "CopilotChat - Toggle Vsplit", -- Toggle vertical split
-      },
-      {
-        "<leader>ccv",
-        ":CopilotChatVisual ",
-        mode = "x",
-        desc = "CopilotChat - Open in vertical split",
-      },
-      {
-        "<leader>ccx",
-        ":CopilotChatInPlace<cr>",
-        mode = "x",
-        desc = "CopilotChat - Run in-place code",
-      },
-      {
-        "<leader>ccf",
-        "<cmd>CopilotChatFixDiagnostic<cr>", -- Get a fix for the diagnostic message under the cursor.
-        desc = "CopilotChat - Fix diagnostic",
-      },
-      {
-        "<leader>ccr",
-        "<cmd>CopilotChatReset<cr>", -- Reset chat history and clear buffer.
-        desc = "CopilotChat - Reset chat history and clear buffer",
-      }
-    },
-  },
+  }
 }
 
 
 lvim.colorscheme = "astrodark"
 -- lvim.colorscheme = "typewriter-night"
--- lvim.autocommands = {
---   {
---     { "ColorScheme" },
---     {
---       pattern = "*",
---       callback = function()
---         vim.opt.termguicolors = true
---         -- vim.opt.background = "dark"
+lvim.autocommands = {
+  {
+    { "ColorScheme" },
+    {
+      pattern = "*",
+      callback = function()
+        --         vim.opt.termguicolors = true
+        --         -- vim.opt.background = "dark"
+        --         -- Clear highlight and set basic highlights
+        --         vim.cmd("highlight clear SignColumn")
+        --         vim.api.nvim_set_hl(0, "CursorLine", { bg = "#2a2a2a" })
+        --         vim.api.nvim_set_hl(0, "Normal", { bg = "#1d1f21" })
+        --         vim.api.nvim_set_hl(0, "GitGutterAdd", { fg = "cyan" })
+        --         vim.api.nvim_set_hl(0, "GitGutterDelete", { fg = "#ee7777" })
+        --         vim.api.nvim_set_hl(0, "GitGutterChange", { fg = "#Af5fff" })
+        --         vim.api.nvim_set_hl(0, "GitGutterChangeDelete", { fg = "red" })
+        --         vim.api.nvim_set_hl(0, "Search", { bg = "None", fg = "Red" })
+        --         vim.api.nvim_set_hl(0, "String", { fg = "#88aabb", ctermfg = 110 })
+        --         vim.api.nvim_set_hl(0, "htmlTagName", { fg = "#696969", bold = true, italic = true })
+        --         vim.cmd([[hi link tsxTagName htmlTagName]])
+        --         -- Number, NERDTree, and Operator highlights
+        --         vim.api.nvim_set_hl(0, "Number", { fg = "#ee7777", ctermfg = 208 })
+        --         vim.api.nvim_set_hl(0, "NERDTreeFlags", { fg = "#88aabb", ctermfg = 208 })
+        --         vim.api.nvim_set_hl(0, "Operator", { fg = "#888888" })
+        --         -- Typescript highlights
+        --         vim.api.nvim_set_hl(0, "typescriptPredefinedType", { fg = "#60687a", italic = true })
+        --         vim.api.nvim_set_hl(0, "typescriptTypeReference", { fg = "#60687a", italic = true })
 
---         -- Clear highlight and set basic highlights
---         vim.cmd("highlight clear SignColumn")
+        --         -- -- Directory, COC, and Diagnostic highlights
+        --         vim.api.nvim_set_hl(0, "Directory", { fg = "#aa4444" })
+        --         -- vim.api.nvim_set_hl(0, "COCWarningSign", {fg = "#Af5fff"})
+        --         -- vim.api.nvim_set_hl(0, "COCErrorSign", {fg = "#aa4444"})
+        --         --
+        --         -- Pmenu and Diagnostic highlights
+        --         vim.api.nvim_set_hl(0, "Pmenu", { ctermfg = 250, ctermbg = 235, fg = "#bcbcbc", bg = "#262626" })
+        --         vim.api.nvim_set_hl(0, "PmenuSel", { ctermfg = 250, ctermbg = 131, fg = "#bcbcbc", bg = "#af5f5f" })
 
---         vim.api.nvim_set_hl(0, "CursorLine", { bg = "#2a2a2a" })
---         vim.api.nvim_set_hl(0, "Normal", { bg = "#1d1f21" })
---         vim.api.nvim_set_hl(0, "GitGutterAdd", { fg = "cyan" })
---         vim.api.nvim_set_hl(0, "GitGutterDelete", { fg = "#ee7777" })
---         vim.api.nvim_set_hl(0, "GitGutterChange", { fg = "#Af5fff" })
---         vim.api.nvim_set_hl(0, "GitGutterChangeDelete", { fg = "red" })
---         vim.api.nvim_set_hl(0, "Search", { bg = "None", fg = "Red" })
---         vim.api.nvim_set_hl(0, "String", { fg = "#88aabb", ctermfg = 110 })
---         vim.api.nvim_set_hl(0, "htmlTagName", { fg = "#696969", bold = true, italic = true })
---         vim.cmd([[hi link tsxTagName htmlTagName]])
+        --         -- Lualine and whitespace highlights
+        --         vim.api.nvim_set_hl(0, "DiagnosticError", { fg = "#ee7777" })
+        --         vim.api.nvim_set_hl(0, "ExtraWhitespace", { bg = "#242424" })
 
---         -- Number, NERDTree, and Operator highlights
---         vim.api.nvim_set_hl(0, "Number", { fg = "#ee7777", ctermfg = 208 })
---         vim.api.nvim_set_hl(0, "NERDTreeFlags", { fg = "#88aabb", ctermfg = 208 })
---         vim.api.nvim_set_hl(0, "Operator", { fg = "#888888" })
+        --         -- Git blamer, MiniIndentscope, and VertSplit color adjustments
+        --         vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { fg = "#4c4c4c" })
+        --         vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = "#343434" })
+        --         vim.api.nvim_set_hl(0, "VertSplit", { bg = "#40452a", fg = "#1d1f21" })
 
---         -- Typescript highlights
---         vim.api.nvim_set_hl(0, "typescriptPredefinedType", { fg = "#60687a", italic = true })
---         vim.api.nvim_set_hl(0, "typescriptTypeReference", { fg = "#60687a", italic = true })
+        --         --" Neovim Indent-Blankline
+        --         vim.api.nvim_set_hl(0, "IndentBlanklineChar", { fg = "#3a3a3a" })
+        --         vim.api.nvim_set_hl(0, "IndentBlanklineSpaceChar", { fg = "#6c6c6c" })
+        --         vim.api.nvim_set_hl(0, "IndentBlanklineSpaceCharBlankLine", { fg = "#6c6c6c" })
+        --         vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg = "#6c6c6c" })
 
---         -- -- Directory, COC, and Diagnostic highlights
---         vim.api.nvim_set_hl(0, "Directory", { fg = "#aa4444" })
---         -- vim.api.nvim_set_hl(0, "COCWarningSign", {fg = "#Af5fff"})
---         -- vim.api.nvim_set_hl(0, "COCErrorSign", {fg = "#aa4444"})
---         --
---         -- Pmenu and Diagnostic highlights
---         vim.api.nvim_set_hl(0, "Pmenu", { ctermfg = 250, ctermbg = 235, fg = "#bcbcbc", bg = "#262626" })
---         vim.api.nvim_set_hl(0, "PmenuSel", { ctermfg = 250, ctermbg = 131, fg = "#bcbcbc", bg = "#af5f5f" })
+        -- NVIM_CMP
+        vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { fg = "#808080", strikethrough = true })
+        -- blue
+        vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "#569CD6" })
+        vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = "#569CD6" })
+        -- light blue
+        vim.api.nvim_set_hl(0, "CmpItemKindVariable", { fg = "#9CDCFE" })
+        vim.api.nvim_set_hl(0, "CmpItemKindInterface", { fg = "#9CDCFE" })
+        vim.api.nvim_set_hl(0, "CmpItemKindText", { fg = "#9CDCFE" })
+        -- pink
+        vim.api.nvim_set_hl(0, "CmpItemKindFunction", { fg = "#C586C0" })
+        vim.api.nvim_set_hl(0, "CmpItemKindMethod", { fg = "#C586C0" })
+        -- front
+        vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { fg = "#D4D4D4" })
+        vim.api.nvim_set_hl(0, "CmpItemKindProperty", { fg = "#D4D4D4" })
+        vim.api.nvim_set_hl(0, "CmpItemKindUnit", { fg = "#D4D4D4" })
 
---         -- Lualine and whitespace highlights
---         vim.api.nvim_set_hl(0, "DiagnosticError", { fg = "#ee7777" })
---         vim.api.nvim_set_hl(0, "ExtraWhitespace", { bg = "#242424" })
+        --         -- Telescope
+        --         vim.api.nvim_set_hl(0, "TelescopeNormal", { fg = "#6c6c6c" })
+        --         vim.api.nvim_set_hl(0, "TelescopeSelection", { fg = "#D4D4D4" })
+        --         vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = "#C586C0" })
+        --         vim.api.nvim_set_hl(0, "jukit_cellmarker_colors", { fg = "#1d615a", bg = "#1d615a" })
+        --         vim.api.nvim_set_hl(0, "IlluminatedWord", { bg = "#3c3c3c" })
+        --         vim.api.nvim_set_hl(0, "IlluminatedCurWord", { bg = "#3c3c3c" })
+        --         vim.api.nvim_set_hl(0, "IlluminatedWordText", { bg = "#3c3c3c" })
+        --         vim.api.nvim_set_hl(0, "IlluminatedWordRead", { bg = "#3c3c3c" })
+        --         vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { bg = "#3c3c3c" })
+      end,
+    },
+  },
+}
 
---         -- Git blamer, MiniIndentscope, and VertSplit color adjustments
---         vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { fg = "#4c4c4c" })
---         vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = "#343434" })
---         vim.api.nvim_set_hl(0, "VertSplit", { bg = "#40452a", fg = "#1d1f21" })
 
---         --" Neovim Indent-Blankline
---         vim.api.nvim_set_hl(0, "IndentBlanklineChar", { fg = "#3a3a3a" })
---         vim.api.nvim_set_hl(0, "IndentBlanklineSpaceChar", { fg = "#6c6c6c" })
---         vim.api.nvim_set_hl(0, "IndentBlanklineSpaceCharBlankLine", { fg = "#6c6c6c" })
---         vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg = "#6c6c6c" })
+-- Needed for supertab
+-- REF: https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
+local cmp = require("cmp")
+local luasnip = require("luasnip")
 
---         -- NVIM_CMP
---         vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { fg = "#808080", strikethrough = true })
---         -- blue
---         vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "#569CD6" })
---         vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = "#569CD6" })
---         -- light blue
---         vim.api.nvim_set_hl(0, "CmpItemKindVariable", { fg = "#9CDCFE" })
---         vim.api.nvim_set_hl(0, "CmpItemKindInterface", { fg = "#9CDCFE" })
---         vim.api.nvim_set_hl(0, "CmpItemKindText", { fg = "#9CDCFE" })
---         -- pink
---         vim.api.nvim_set_hl(0, "CmpItemKindFunction", { fg = "#C586C0" })
---         vim.api.nvim_set_hl(0, "CmpItemKindMethod", { fg = "#C586C0" })
---         -- front
---         vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { fg = "#D4D4D4" })
---         vim.api.nvim_set_hl(0, "CmpItemKindProperty", { fg = "#D4D4D4" })
---         vim.api.nvim_set_hl(0, "CmpItemKindUnit", { fg = "#D4D4D4" })
-
---         -- Telescope
---         vim.api.nvim_set_hl(0, "TelescopeNormal", { fg = "#6c6c6c" })
---         vim.api.nvim_set_hl(0, "TelescopeSelection", { fg = "#D4D4D4" })
---         vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = "#C586C0" })
---         vim.api.nvim_set_hl(0, "jukit_cellmarker_colors", { fg = "#1d615a", bg = "#1d615a" })
---         vim.api.nvim_set_hl(0, "IlluminatedWord", { bg = "#3c3c3c" })
---         vim.api.nvim_set_hl(0, "IlluminatedCurWord", { bg = "#3c3c3c" })
---         vim.api.nvim_set_hl(0, "IlluminatedWordText", { bg = "#3c3c3c" })
---         vim.api.nvim_set_hl(0, "IlluminatedWordRead", { bg = "#3c3c3c" })
---         vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { bg = "#3c3c3c" })
---       end,
---     },
---   },
--- }
+local has_words_before = function()
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+lvim.builtin.cmp.mapping["<Tab>"] = cmp.mapping(function(fallback)
+  if cmp.visible() then
+    if vim.fn.exists('b:_codeium_completions') ~= 0 then
+      vim.api.nvim_input(vim.fn['codeium#Accept']())
+    end
+  elseif luasnip.expand_or_jumpable() then
+    luasnip.expand_or_jump()
+  elseif has_words_before() then
+    cmp.complete()
+  else
+    fallback()
+  end
+end, { "i", "s" })
+lvim.builtin.cmp.mapping["<S-Tab>"] = cmp.mapping(function(fallback)
+  if cmp.visible() then
+    cmp.select_prev_item()
+  elseif luasnip.jumpable(-1) then
+    luasnip.jump(-1)
+  else
+    fallback()
+  end
+end, { "i", "s" })
 
 local kind_icons = {
   Copilot = "",
+  Codeium = "",
   Text = "󰉿",
   Method = "󰆧",
   Function = "󰊕",
@@ -319,12 +298,15 @@ local kind_icons = {
   Operator = "󰆕",
   TypeParameter = "",
 }
+
+
 lvim.builtin.cmp.formatting = {
   format = function(entry, vim_item)
     -- Kind icons
     vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
     -- Source
     vim_item.menu = ({
+      codeium = "[Codeium]",
       buffer = "[Buffer]",
       luasnip = "[LuaSnip]",
       nvim_lsp = "[LSP]",
@@ -334,6 +316,7 @@ lvim.builtin.cmp.formatting = {
     return vim_item
   end
 }
+
 
 
 lvim.builtin.gitsigns.opts = {
@@ -419,41 +402,31 @@ lvim.keys.normal_mode["<space>s"] = ":HopWord<cr>"
 lvim.keys.normal_mode["<space>j"] = ":HopLineAC<cr>"
 lvim.keys.normal_mode["<space>k"] = ":HopLineBC<cr>"
 
+-- lvim.keys.normal_mode["Tab"] = ":HopLineBC<cr>"
+
+
+-- imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
 
 
 vim.opt.relativenumber = true
 vim.opt.number         = false
 
+vim.opt.shell          = "/bin/sh"
 
--- Below config is required to prevent copilot overriding Tab with a suggestion
--- when you're just trying to indent!
-local has_words_before = function()
-  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
-end
-local on_tab = vim.schedule_wrap(function(fallback)
-  local cmp = require("cmp")
-  if cmp.visible() and has_words_before() then
-    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-  else
-    fallback()
-  end
-end)
+vim.opt.foldmethod     = "expr"                       -- default is "normal"
+vim.opt.foldexpr       = "nvim_treesitter#foldexpr()" -- default is ""
+vim.opt.foldenable     = false
 
-lvim.builtin.cmp.mapping["<Tab>"] = on_tab
+
 
 lvim.keys.normal_mode[',/'] = ":noh<CR>"
-
 lvim.builtin.which_key.mappings['e'] = {}
 lvim.builtin.which_key.mappings['c'] = {}
 lvim.builtin.which_key.mappings['/'] = {}
 
+lvim.keys.normal_mode['<M-l>'] = ":wincmd l<CR>"
+lvim.keys.normal_mode['<M-h>'] = ":wincmd h<CR>"
 
-
-vim.opt.foldmethod = "expr"                       -- default is "normal"
-vim.opt.foldexpr   = "nvim_treesitter#foldexpr()" -- default is ""
-vim.opt.foldenable = false
 
 
 lvim.autocommands = {
@@ -494,7 +467,6 @@ lvim.autocommands = {
       pattern = { "*" }, -- see `:h autocmd-events`
       callback = function()
         vim.cmd("AerialToggle!")
-        -- vim.keymap.set("n", "<leader>ao", "<cmd>AerialToggle!<CR>")
       end,
     }
   },
