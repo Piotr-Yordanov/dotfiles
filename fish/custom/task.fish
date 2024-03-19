@@ -1,13 +1,13 @@
 function vpe --description "Create new evergreen note"
   touch ~/warehouse/vimwiki/evergreen/$argv.md
   echo tte >> ~/warehouse/vimwiki/evergreen/$argv.md
-  lv ~/warehouse/vimwiki/evergreen/$argv.md
+  v ~/warehouse/vimwiki/evergreen/$argv.md
 end
 
 function vpp --description "Create new project"
   touch ~/warehouse/vimwiki/projects/$argv.md
   echo t >> ~/warehouse/vimwiki/projects/$argv.md
-  lv ~/warehouse/vimwiki/projects/$argv.md
+  v ~/warehouse/vimwiki/projects/$argv.md
 end
 
 function vpi --description "Create new project"

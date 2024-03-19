@@ -126,9 +126,6 @@ require("lazy").setup({
   'farmergreg/vim-lastplace',
 
 
-
-
-
   -- Git
   -- use 'tpope/vim-fongitive'
   'lewis6991/gitsigns.nvim',
