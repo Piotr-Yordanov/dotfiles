@@ -71,3 +71,7 @@ oh-my-posh init fish --config '~/.config/fish/oh-my-posh/pure.simple.omp.json' |
 export ROOTLESSKIT_PARENT_EUID=$(id -u)
 export ROOTLESSKIT_PARENT_GID=$(id -g)
 export WINEPREFIX=/home/alpha/.wine
+
+export JAVA_HOME=/usr/lib/jvm/default
+
+export TERM=xterm

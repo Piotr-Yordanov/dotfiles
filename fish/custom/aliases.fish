@@ -137,8 +137,9 @@ alias fan-cool="sudo smbios-thermal-ctl --set-thermal-mode cool-bottom"
 alias fan="sudo sensors | grep Fan"
 
 # Tailscale and other VPN
-alias tsu="sudo tailscale up"
+alias tsu="sudo tailscale up --accept-routes"
 alias tsd="sudo tailscale down"
+alias tss="sudo tailscale status"
 alias nord="sudo nordvpn"
 
 # DOcker and built tools
