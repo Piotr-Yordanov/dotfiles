@@ -16,6 +16,11 @@ end
 function vrn
     nohup remmina -c "vnc://ec2-18-188-187-12.us-east-2.compute.amazonaws.com?VncPassword=8M7DDd0NRcw8W+kUPOBSXg==" </dev/null >/dev/null 2>&1 &
 end
+
+function sha
+  ssh -i "/home/alpha/workspace/piotryordanov/new_server_creation/main.pem" arch@ec2-3-15-199-49.us-east-2.compute.amazonaws.com
+end
+
 function shv
     ssh -i "/home/alpha/workspace/rocket-bot/MT5-Docker/new_server_creation/main.pem" arch@ec2-18-188-187-12.us-east-2.compute.amazonaws.com
 end

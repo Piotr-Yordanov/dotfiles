@@ -136,6 +136,30 @@ lvim.plugins = {
   { 'tools-life/taskwiki' },
 
 
+  { 'tpope/vim-dadbod' },
+  { 'kristijanhusak/vim-dadbod-ui' },
+  {
+    'kristijanhusak/vim-dadbod-completion',
+    filetype = { 'sql', 'mysql', 'plsql' },
+    config = function()
+      vim.cmd([[
+ autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
+]])
+    end
+  },
+
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("oil").setup()
+
+      vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+    end
+  },
+
   {
     'stevearc/aerial.nvim',
     config = function()
@@ -204,9 +228,12 @@ lvim.plugins = {
       require("telescope").setup(opts)
       require("telescope").load_extension('cmdline')
     end,
+  },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
   }
 }
-
 
 lvim.colorscheme = "astrodark"
 -- lvim.colorscheme = "typewriter-night"
@@ -260,13 +287,9 @@ lvim.autocommands = {
         --         vim.opt.termguicolors = true
         --         -- vim.opt.background = "dark"
         --         -- Clear highlight and set basic highlights
-        --         vim.cmd("highlight clear SignColumn")
-        --         vim.api.nvim_set_hl(0, "CursorLine", { bg = "#2a2a2a" })
-        --         vim.api.nvim_set_hl(0, "Normal", { bg = "#1d1f21" })
-        --         vim.api.nvim_set_hl(0, "GitGutterAdd", { fg = "cyan" })
-        --         vim.api.nvim_set_hl(0, "GitGutterDelete", { fg = "#ee7777" })
-        --         vim.api.nvim_set_hl(0, "GitGutterChange", { fg = "#Af5fff" })
-        --         vim.api.nvim_set_hl(0, "GitGutterChangeDelete", { fg = "red" })
+        vim.api.nvim_set_hl(0, "CursorLine", { bg = "#2a2a2a" })
+        vim.api.nvim_set_hl(0, "Normal", { bg = "#1d1f21" })
+
         --         vim.api.nvim_set_hl(0, "Search", { bg = "None", fg = "Red" })
         --         vim.api.nvim_set_hl(0, "String", { fg = "#88aabb", ctermfg = 110 })
         --         vim.api.nvim_set_hl(0, "htmlTagName", { fg = "#696969", bold = true, italic = true })
@@ -280,28 +303,28 @@ lvim.autocommands = {
         --         vim.api.nvim_set_hl(0, "typescriptTypeReference", { fg = "#60687a", italic = true })
 
         --         -- -- Directory, COC, and Diagnostic highlights
-        --         vim.api.nvim_set_hl(0, "Directory", { fg = "#aa4444" })
+        -- vim.api.nvim_set_hl(0, "Directory", { fg = "#aa4444" })
         --         -- vim.api.nvim_set_hl(0, "COCWarningSign", {fg = "#Af5fff"})
         --         -- vim.api.nvim_set_hl(0, "COCErrorSign", {fg = "#aa4444"})
         --         --
-        --         -- Pmenu and Diagnostic highlights
-        --         vim.api.nvim_set_hl(0, "Pmenu", { ctermfg = 250, ctermbg = 235, fg = "#bcbcbc", bg = "#262626" })
-        --         vim.api.nvim_set_hl(0, "PmenuSel", { ctermfg = 250, ctermbg = 131, fg = "#bcbcbc", bg = "#af5f5f" })
+        -- -- Pmenu and Diagnostic highlights
+        -- vim.api.nvim_set_hl(0, "Pmenu", { ctermfg = 250, ctermbg = 235, fg = "#bcbcbc", bg = "#262626" })
+        -- vim.api.nvim_set_hl(0, "PmenuSel", { ctermfg = 250, ctermbg = 131, fg = "#bcbcbc", bg = "#af5f5f" })
 
-        --         -- Lualine and whitespace highlights
-        --         vim.api.nvim_set_hl(0, "DiagnosticError", { fg = "#ee7777" })
-        --         vim.api.nvim_set_hl(0, "ExtraWhitespace", { bg = "#242424" })
+        -- Lualine and whitespace highlights
+        vim.api.nvim_set_hl(0, "DiagnosticError", { fg = "#ee7777" })
+        vim.api.nvim_set_hl(0, "ExtraWhitespace", { bg = "#242424" })
 
-        --         -- Git blamer, MiniIndentscope, and VertSplit color adjustments
-        --         vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { fg = "#4c4c4c" })
-        --         vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = "#343434" })
-        --         vim.api.nvim_set_hl(0, "VertSplit", { bg = "#40452a", fg = "#1d1f21" })
+        -- -- Git blamer, MiniIndentscope, and VertSplit color adjustments
+        -- vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { fg = "#4c4c4c" })
+        -- vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = "#343434" })
+        -- vim.api.nvim_set_hl(0, "VertSplit", { bg = "#40452a", fg = "#1d1f21" })
 
-        --         --" Neovim Indent-Blankline
-        --         vim.api.nvim_set_hl(0, "IndentBlanklineChar", { fg = "#3a3a3a" })
-        --         vim.api.nvim_set_hl(0, "IndentBlanklineSpaceChar", { fg = "#6c6c6c" })
-        --         vim.api.nvim_set_hl(0, "IndentBlanklineSpaceCharBlankLine", { fg = "#6c6c6c" })
-        --         vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg = "#6c6c6c" })
+        -- --" Neovim Indent-Blankline
+        -- vim.api.nvim_set_hl(0, "IndentBlanklineChar", { fg = "#3a3a3a" })
+        -- vim.api.nvim_set_hl(0, "IndentBlanklineSpaceChar", { fg = "#6c6c6c" })
+        -- vim.api.nvim_set_hl(0, "IndentBlanklineSpaceCharBlankLine", { fg = "#6c6c6c" })
+        -- vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg = "#6c6c6c" })
 
         -- NVIM_CMP
         vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { fg = "#808080", strikethrough = true })
@@ -420,13 +443,13 @@ lvim.builtin.cmp.formatting = {
 
 
 lvim.builtin.gitsigns.opts = {
-  signs = {
-    add          = { hl = 'GitGutterAdd', text = '+', numhl = 'GitGutterAdd', linehl = 'GitGutterAdd' },
-    change       = { hl = 'GitGutterChange', text = '~', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
-    delete       = { hl = 'GitGutterDelete', text = '_', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
-    topdelete    = { hl = 'GitGutterDelete', text = '‾', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
-    changedelete = { hl = 'GitGutterChangeDelete', text = '~_', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
-  },
+  -- signs = {
+  --   add          = { text = '+', },
+  --   change       = { text = '~', },
+  --   delete       = { text = '_', },
+  --   topdelete    = { text = '‾', },
+  --   changedelete = { text = '~_' },
+  -- },
   current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
   current_line_blame_opts = {
     virt_text = true,
@@ -501,11 +524,12 @@ lvim.keys.normal_mode["<space>w"] = ":HopChar2<cr>"
 lvim.keys.normal_mode["<space>s"] = ":HopWord<cr>"
 lvim.keys.normal_mode["<space>j"] = ":HopLineAC<cr>"
 lvim.keys.normal_mode["<space>k"] = ":HopLineBC<cr>"
-
 -- lvim.keys.normal_mode["Tab"] = ":HopLineBC<cr>"
 
-
--- imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
+-- Assuming you want to add custom mappings for the flash plugin
+vim.api.nvim_set_keymap('n', 's', '<cmd>lua require("flash").jump()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'S', '<cmd>lua require("flash").treesitter()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'R', '<cmd>lua require("flash").treesitter_search()<CR>', { noremap = true, silent = true })
 
 
 vim.opt.relativenumber = true
@@ -526,3 +550,53 @@ lvim.builtin.which_key.mappings['/'] = {}
 
 lvim.keys.normal_mode['<M-l>'] = ":wincmd l<CR>"
 lvim.keys.normal_mode['<M-h>'] = ":wincmd h<CR>"
+
+
+
+lvim.autocommands = {
+  {
+    "BufEnter",          -- see `:h autocmd-events`
+    {                    -- this table is passed verbatim as `opts` to `nvim_create_autocmd`
+      pattern = { "*" }, -- see `:h autocmd-events`
+      callback = function()
+        local wins = vim.api.nvim_tabpage_list_wins(0)
+        -- Both neo-tree and aerial will auto-quit if there is only a single window left
+        if #wins <= 1 then return end
+        local sidebar_fts = { aerial = true, ["neo-tree"] = true }
+        for _, winid in ipairs(wins) do
+          if vim.api.nvim_win_is_valid(winid) then
+            local bufnr = vim.api.nvim_win_get_buf(winid)
+            local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
+            -- If any visible windows are not sidebars, early return
+            if not sidebar_fts[filetype] then
+              return
+              -- If the visible window is a sidebar
+            else
+              -- only count filetypes once, so remove a found sidebar from the detection
+              sidebar_fts[filetype] = nil
+            end
+          end
+        end
+        if #vim.api.nvim_list_tabpages() > 1 then
+          vim.cmd.tabclose()
+        else
+          vim.cmd.qall()
+        end
+      end,
+    }
+  },
+  {
+    "VimEnter",          -- see `:h autocmd-events`
+    {                    -- this table is passed verbatim as `opts` to `nvim_create_autocmd`
+      pattern = { "*" }, -- see `:h autocmd-events`
+      callback = function()
+        vim.cmd("AerialToggle!")
+      end,
+    }
+  },
+}
+
+vim.keymap.set('n', '<leader>S', '<Plug>(DBUI_SaveQuery)', { noremap = true, silent = true })
+vim.g.db_ui_save_location = '~/db_ui_queries'
+
+vim.keymap.set('n', '<leader>r', ':normal vip<CR><PLUG>(DBUI_ExecuteQuery)', { buffer = true })
