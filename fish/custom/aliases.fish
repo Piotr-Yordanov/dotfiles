@@ -147,6 +147,7 @@ alias dsa='docker stop $(docker ps -aq)'
 alias drma='docker rm $(docker ps -aq)'
 alias drmna='docker network ls --filter "type=custom" -q | xargs -r docker network rm'
 alias drmia='docker rmi -f $(docker images -q)'
+alias drmva='docker volume rm $(docker volume ls -q)'
 alias m="make"
 alias mr="make run"
 alias mb="make build"
