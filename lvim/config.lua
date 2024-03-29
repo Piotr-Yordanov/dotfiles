@@ -34,6 +34,10 @@ lvim.plugins = {
     'Vigemus/iron.nvim',
     config = function()
       local iron = require("iron.core")
+      local view = require("iron.view")
+
+      -- One can always use the default commands from vim directly
+      repl_open_cmd = "vertical botright 50 split"
 
       iron.setup {
         config = {
@@ -55,7 +59,7 @@ lvim.plugins = {
           },
           -- How the repl window will be displayed
           -- See below for more information
-          repl_open_cmd = require('iron.view').bottom(40),
+          repl_open_cmd = repl_open_cmd
         },
         -- Iron doesn't set keymaps by default anymore.
         -- You can set them here or manually add keymaps to the functions in iron.core
@@ -83,10 +87,11 @@ lvim.plugins = {
       }
 
       -- iron also has a list of commands, see :h iron-commands for all available commands
-      vim.keymap.set('n', '<space>rs', '<cmd>IronRepl<cr>')
-      vim.keymap.set('n', '<space>rr', '<cmd>IronRestart<cr>')
-      vim.keymap.set('n', '<space>rf', '<cmd>IronFocus<cr>')
-      vim.keymap.set('n', '<space>rh', '<cmd>IronHide<cr>')
+      vim.keymap.set('n', '<leader>rs', '<cmd>IronRepl<cr>')
+      vim.keymap.set('n', '<leader>rr', '<cmd>IronRestart<cr>')
+      vim.keymap.set('n', '<leader>rf', '<cmd>IronFocus<cr>')
+      vim.keymap.set('n', '<leader>rh', '<cmd>IronHide<cr>')
+      vim.keymap.set('n', '<leader><space', '<cmd>IronHide<cr>')
     end
   },
   {
@@ -552,49 +557,6 @@ lvim.keys.normal_mode['<M-l>'] = ":wincmd l<CR>"
 lvim.keys.normal_mode['<M-h>'] = ":wincmd h<CR>"
 
 
-
-lvim.autocommands = {
-  {
-    "BufEnter",          -- see `:h autocmd-events`
-    {                    -- this table is passed verbatim as `opts` to `nvim_create_autocmd`
-      pattern = { "*" }, -- see `:h autocmd-events`
-      callback = function()
-        local wins = vim.api.nvim_tabpage_list_wins(0)
-        -- Both neo-tree and aerial will auto-quit if there is only a single window left
-        if #wins <= 1 then return end
-        local sidebar_fts = { aerial = true, ["neo-tree"] = true }
-        for _, winid in ipairs(wins) do
-          if vim.api.nvim_win_is_valid(winid) then
-            local bufnr = vim.api.nvim_win_get_buf(winid)
-            local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
-            -- If any visible windows are not sidebars, early return
-            if not sidebar_fts[filetype] then
-              return
-              -- If the visible window is a sidebar
-            else
-              -- only count filetypes once, so remove a found sidebar from the detection
-              sidebar_fts[filetype] = nil
-            end
-          end
-        end
-        if #vim.api.nvim_list_tabpages() > 1 then
-          vim.cmd.tabclose()
-        else
-          vim.cmd.qall()
-        end
-      end,
-    }
-  },
-  {
-    "VimEnter",          -- see `:h autocmd-events`
-    {                    -- this table is passed verbatim as `opts` to `nvim_create_autocmd`
-      pattern = { "*" }, -- see `:h autocmd-events`
-      callback = function()
-        vim.cmd("AerialToggle!")
-      end,
-    }
-  },
-}
 
 vim.keymap.set('n', '<leader>S', '<Plug>(DBUI_SaveQuery)', { noremap = true, silent = true })
 vim.g.db_ui_save_location = '~/db_ui_queries'
