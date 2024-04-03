@@ -10,9 +10,7 @@ function update
   # paru -Sua
   fisher
   npm update -g
-  # fwupdmgr get-updates
-  # fwupdmgr update
-  nvim -c 'PackerUpdate'
+  ~/.local/bin/lvim -c 'Lazy sync'
 end
 
 function update_openpyn
