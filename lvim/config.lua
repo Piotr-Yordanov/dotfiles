@@ -532,8 +532,8 @@ lvim.keys.normal_mode["<space>k"] = ":HopLineBC<cr>"
 -- lvim.keys.normal_mode["Tab"] = ":HopLineBC<cr>"
 
 -- Assuming you want to add custom mappings for the flash plugin
-vim.api.nvim_set_keymap('n', 's', '<cmd>lua require("flash").jump()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'S', '<cmd>lua require("flash").treesitter()<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', 's', '<cmd>lua require("flash").jump()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-s>', '<cmd>lua require("flash").treesitter()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'R', '<cmd>lua require("flash").treesitter_search()<CR>', { noremap = true, silent = true })
 
 

@@ -174,3 +174,8 @@ alias davinci="/opt/resolve/bin/resolve"
 
 
 alias shut="tsd; nordvpn d; shutdown now"
+alias r="rye"
+alias rr="rye run"
+alias rd="rye run dev"
+alias rs="rye sync"
+alias ra="rye add"

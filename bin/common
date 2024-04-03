@@ -5,8 +5,8 @@
 feh --bg-fill $HOME/.config/feh/sith_last_supper.jpg
 feh --bg-center $HOME/.config/feh/monk-meditation.jpg
 
-kill_window.sh "tt_alacritty"
-nohup alacritty -t 'tt_alacritty' -e taskwarrior-tui</dev/null >/tmp/green 2>/tmp/green &
+# kill_window.sh "tt_alacritty"
+# nohup alacritty -t 'tt_alacritty' -e taskwarrior-tui</dev/null >/tmp/green 2>/tmp/green &
 
 
 ## Polybar
