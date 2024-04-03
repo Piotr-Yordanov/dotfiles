@@ -1,4 +1,3 @@
 include ~/.config/task/taskrc.all
 
 context=office
-data.location=\/home\/alpha\/warehouse\/taskwarrior
