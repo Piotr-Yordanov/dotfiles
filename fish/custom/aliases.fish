@@ -181,3 +181,5 @@ alias rd="rye run dev"
 alias rdd="rye run rdev"
 alias rs="rye sync"
 alias ra="rye add"
+
+alias bb="git add .; git commit -m 'heartbeat'; git push"
