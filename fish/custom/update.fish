@@ -10,7 +10,8 @@ function update
   # paru -Sua
   fisher
   npm update -g
-  ~/.local/bin/lvim -c 'Lazy sync'
+  ~/.local/bin/lvim +LvimUpdate +q
+  ~/.local/bin/lvim +LvimSyncCorePlugins +q
 end
 
 function update_openpyn
