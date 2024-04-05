@@ -18,18 +18,17 @@
 
 
 function n
-    # List all items, filter for "Bondage Music Radio," and shuffle them randomly
     mpd
-    set -l items (mpc listall | grep ".*Bondage Music Radio.*" | shuf -n 4)
+    set -l items (mpc listall | grep -E ".*Bondage Music Radio.*|.*Africa.*" | shuf -n 4)
     echo $items[3]
     mpc clear
     mpc add $items[3]
     mpc play
 end
 
-function nma
-    # List all items, filter for "Bondage Music Radio," and shuffle them randomly
-    set -l items (mpc listall | grep ".*Bondage Music Radio.*" | shuf -n 4)
+function n
+    mpd
+    set -l items (mpc listall | grep -E ".*Africa.*" | shuf -n 4)
     echo $items[3]
     mpc clear
     mpc add $items[3]

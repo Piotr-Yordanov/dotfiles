@@ -105,6 +105,7 @@ alias fu='curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://gi
 
 # Task warrior
 alias t='task import rc.hooks=0 ~/warehouse/taskwarrior/all-tasks.json; taskwarrior-tui'
+alias ts='task export > all-tasks.json'
 alias ti="task add"
 alias tcn="task context none"
 
