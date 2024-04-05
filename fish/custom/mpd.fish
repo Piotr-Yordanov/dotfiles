@@ -26,7 +26,7 @@ function n
     mpc play
 end
 
-function n
+function na
     mpd
     set -l items (mpc listall | grep -E ".*Africa.*" | shuf -n 4)
     echo $items[3]
