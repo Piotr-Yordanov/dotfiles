@@ -1,9 +1,18 @@
+# function fo
+#   v -c ":Telescope find_files"
+#   # set file (fd --type file --follow --hidden --exclude .git | fzf --preview 'bat --color=always --line-range=:500 {}')
+#   # if test "$file" != ''
+#   #   rifle $file
+#   # end
+# end
+
 function fo
-  v -c ":Telescope find_files"
-  # set file (fd --type file --follow --hidden --exclude .git | fzf --preview 'bat --color=always --line-range=:500 {}')
-  # if test "$file" != ''
-  #   rifle $file
-  # end
+ # Check if project.toml exists in the current directory
+ if test -e ./pyproject.toml
+    rye run ~/.local/bin/lvim -c ":Telescope find_files"
+ else
+    v -c ":Telescope find_files"
+ end
 end
 
 function fk

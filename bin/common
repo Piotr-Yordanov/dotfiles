@@ -26,8 +26,12 @@ nohup greenclip daemon </dev/null >/tmp/green 2>/tmp/green &
 nohup synology-drive </dev/null >/tmp/synology 2>/tmp/synology &
 
 ## Laptop Specific
-sudo smbios-thermal-ctl --set-thermal-mode performance
+sudo smbios-thermal-ctl --set-thermal-mode quiet
 
 
 /usr/bin/ps aux | grep alternative_layouts.py | awk '{print $2}' | xargs kill -9
 nohup $HOME/.config/i3/alternative_layouts.py </dev/null >/tmp/green 2>/tmp/green &
+
+i3-resurrect restore -d ~/.config/i3/i3-resurrect -w 9
+
+vivaldi

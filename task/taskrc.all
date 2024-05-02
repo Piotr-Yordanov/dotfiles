@@ -16,7 +16,8 @@
 
 # Files
 # data.location=/home/alpha/warehouse/taskwarrior
-data.location=/home/alpha/.taskwarrior
+# data.location=/home/alpha/.taskwarrior
+# rc.confirmation=no
 
 # To use the default location of the XDG directories,
 # move this configuration file from ~/.taskrc to ~/.config/task/taskrc and uncomment below
@@ -67,11 +68,6 @@ uda.taskwarrior-tui.shortcuts.9=~/.config/task/tui/9.sh
 uda.taskwarrior-tui.task-report.next.filter=status:pending and -BLOCKING description!~header project!~_backlog
 
 
-# TASKD server
-taskd.server=localhost
-taskd.credentials = Public/Alpha/16122ea2-3571-4574-a0de-a70d23805f93
-
-
 # ============================================================================= #
 #                                  COLORS                                       #
 # ============================================================================= #
@@ -81,7 +77,6 @@ color.label.sort=yellow
 color.tagged=rgb111
 color.tag.next=green
 color.active=bold black on red
-
 color.due=red on black
 # color.overdue=bold white on red
 
@@ -91,8 +86,8 @@ color.due=red on black
 # ============================================================================= #
 #                                   REPORTS                                     #
 # ============================================================================= #
-report.next.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Description,Urg,Wait,Todoist
-report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.truncated_count,urgency,wait.remaining,todoist
+report.next.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Description,Urg,Wait,Dynalist
+report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.truncated_count,urgency,wait.remaining,dynalist
 report.next.sort=urgency-,id+,tags-/,project-/,urgency-,due-
 # report.next.filter = status:pending (pro:release)
 
@@ -136,12 +131,6 @@ context.waiting_for.write=+waiting_for
 context.hobbies.read=+hobbies
 context.hobbies.write=+hobbies
 
-context.phone.read=+phone
-context.phone.write=+phone
 
-context.people.read=+people
-context.people.write=+people
-
-
-uda.todoist.type=string
-uda.todoist.label=Todoist
+uda.dynalist.type=string
+uda.dynalist.label=Dynalist

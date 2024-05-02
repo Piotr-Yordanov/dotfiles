@@ -75,5 +75,12 @@
       "* $3"
     ],
     "description": "Waiting for tag"
+  },
+  "tp": {
+    "prefix": "tp",
+    "body": [
+      "## $1 | project:$1"
+    ],
+    "description": "Create project"
   }
 }

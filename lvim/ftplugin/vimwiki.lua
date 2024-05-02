@@ -2,7 +2,6 @@ function map(mode, shortcut, command)
   vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
 end
 
--- vim.cmd(' setlocal conceallevel=2 ')
 -- vim.g.bullets_enabled_file_types = {
 --   'markdown'
 -- }
@@ -51,3 +50,7 @@ vim.cmd [[
   autocmd BufReadPost * normal! zR
 ]]
 
+
+vim.cmd [[
+  let g:taskwiki_taskrc_location="~/.config/task/taskrc.default"
+]]

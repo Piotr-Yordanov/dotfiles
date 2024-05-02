@@ -1,0 +1,23 @@
+[
+  {
+    "command": [
+      "keepassxc"
+    ],
+    "working_directory": "/home/alpha"
+  },
+  {
+    "command": [
+      "/usr/bin/kitty",
+      "taskwarrior-tui"
+    ],
+    "working_directory": "/home/alpha"
+  },
+  {
+    "command": [
+      "/usr/bin/kitty",
+      "$HOME/.local/bin/lvim",
+      "$HOME/warehouse/vimwiki/__office.md"
+    ],
+    "working_directory": "/home/alpha"
+  }
+]

@@ -29,6 +29,7 @@ set -Ua fish_user_paths $HOME/.cache/git-fuzzy/bin
 set -Ua fish_user_paths $HOME/.config/bin/fzf
 set -Ua fish_user_paths $HOME/.poetry/bin
 set -Ua fish_user_paths $PYENV_ROOT/bin
+set -Ua fish_user_paths "$HOME/.rye/shims"
 
 export EDITOR=lvim
 
@@ -73,4 +74,6 @@ export ROOTLESSKIT_PARENT_GID=$(id -g)
 export WINEPREFIX=/home/alpha/.wine
 
 export JAVA_HOME=/usr/lib/jvm/default
-export TERM=xterm
+export TERM=kitty
+
+export RYE_HOME=$HOME/.config/rye

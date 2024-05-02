@@ -67,7 +67,7 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/home/alpha/\x2elocal/bin\x1e/home/alpha/\x2elocal/npm\x2dglobal/bin\x1e/home/alpha/\x2econfig/bin/platform\x2dtools\x1e/home/alpha/\x2econfig/bin\x1e/home/alpha/\x2enpm\x2dglobal/bin\x1e/home/alpha/\x2elocal/lib/python3\x2e9/site\x2dpackages/\x1e/home/alpha/\x2ecodon/bin\x1e/home/alpha/go/bin\x1e/home/alpha/\x2econfig/bin/\x1e/home/alpha/\x2ecargo/bin\x1e/home/alpha/Android/Sdk/emulator\x1e/home/alpha/Android/Sdk/tools\x1e/home/alpha/Android/Sdk/tools/bin\x1e/home/alpha/Android/Sdk/platform\x2dtools\x1e/home/alpha/\x2ecache/git\x2dfuzzy/bin\x1e/home/alpha/\x2econfig/bin/fzf\x1e/home/alpha/\x2epoetry/bin\x1e/home/alpha/\x2epyenv/bin
+SETUVAR fish_user_paths:/home/alpha/\x2elocal/bin\x1e/home/alpha/\x2elocal/npm\x2dglobal/bin\x1e/home/alpha/\x2econfig/bin/platform\x2dtools\x1e/home/alpha/\x2econfig/bin\x1e/home/alpha/\x2enpm\x2dglobal/bin\x1e/home/alpha/\x2elocal/lib/python3\x2e9/site\x2dpackages/\x1e/home/alpha/\x2ecodon/bin\x1e/home/alpha/go/bin\x1e/home/alpha/\x2econfig/bin/\x1e/home/alpha/\x2ecargo/bin\x1e/home/alpha/Android/Sdk/emulator\x1e/home/alpha/Android/Sdk/tools\x1e/home/alpha/Android/Sdk/tools/bin\x1e/home/alpha/Android/Sdk/platform\x2dtools\x1e/home/alpha/\x2ecache/git\x2dfuzzy/bin\x1e/home/alpha/\x2econfig/bin/fzf\x1e/home/alpha/\x2epoetry/bin\x1e/home/alpha/\x2epyenv/bin\x1e/home/alpha/\x2erye/shims
 SETUVAR pure_begin_prompt_with_current_directory:true
 SETUVAR pure_check_for_new_release:false
 SETUVAR pure_color_at_sign:pure_color_mute

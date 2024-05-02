@@ -9,7 +9,7 @@ vim.cmd [[
   let g:vimwiki_ext2syntax = {'.md': 'markdown'}
   set foldmethod=manual
   " let taskwiki_disable_concealcursor="yes"
-  " let vimwiki_conceallevel = 1
+  let g:vimwiki_conceallevel = 0
 ]]
 lvim.leader = ","
 lvim.builtin.terminal.open_mapping = "<c-t>"
@@ -29,6 +29,51 @@ lvim.plugins = {
       })
     end
   },
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*", -- recommended, use latest release instead of latest commit
+    lazy = true,
+    ft = "markdown",
+    -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+    -- event = {
+    --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+    --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+    --   "BufReadPre path/to/my-vault/**.md",
+    --   "BufNewFile path/to/my-vault/**.md",
+    -- },
+    dependencies = {
+      -- Required.
+      "nvim-lua/plenary.nvim",
+
+      -- see below for full list of optional dependencies 👇
+    },
+    opts = {
+      workspaces = {
+        {
+          name = "personal",
+          path = "~/warehouse/knowledge/Second Brain",
+        },
+      },
+
+      -- see below for full list of options 👇
+    },
+
+  },
+  {
+    "epwalsh/pomo.nvim",
+    version = "*", -- Recommended, use latest release instead of latest commit
+    lazy = true,
+    cmd = { "TimerStart", "TimerRepeat" },
+    dependencies = {
+      -- Optional, but highly recommended if you want to use the "Default" timer
+      "rcarriga/nvim-notify",
+    },
+    opts = {
+      -- See below for full list of options 👇
+    },
+  },
+
+  { "catppuccin/nvim",      name = "catppuccin", priority = 1000 },
 
   {
     'Vigemus/iron.nvim',
@@ -251,7 +296,7 @@ lvim.plugins = {
 }
 
 lvim.colorscheme = "astrodark"
--- lvim.colorscheme = "typewriter-night"
+-- lvim.colorscheme = "catppuccin-latte"
 --
 lvim.autocommands = {
   {
@@ -299,52 +344,33 @@ lvim.autocommands = {
     {
       pattern = "*",
       callback = function()
-        --         vim.opt.termguicolors = true
-        --         -- vim.opt.background = "dark"
-        --         -- Clear highlight and set basic highlights
-        vim.api.nvim_set_hl(0, "CursorLine", { bg = "#2a2a2a" })
-        vim.api.nvim_set_hl(0, "Normal", { bg = "#1d1f21" })
+        -- vim.opt.termguicolors = true
+        -- Check if a certain theme is in place and set the highlight group accordingly
+        local current_theme = vim.g.colors_name
 
+        if current_theme == "astrodark" then
+          vim.opt.background = "dark"
+          vim.api.nvim_set_hl(0, "CursorLine", { bg = "#2a2a2a" })
+          vim.api.nvim_set_hl(0, "Normal", { bg = "#1d1f21" })
+
+          vim.api.nvim_set_hl(0, "IlluminatedWord", { bg = "#3c3c3c" })
+          vim.api.nvim_set_hl(0, "IlluminatedCurWord", { bg = "#3c3c3c" })
+          vim.api.nvim_set_hl(0, "IlluminatedWordText", { bg = "#3c3c3c" })
+          vim.api.nvim_set_hl(0, "IlluminatedWordRead", { bg = "#3c3c3c" })
+          vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { bg = "#3c3c3c" })
+        end
+
+
+        -- Git Signs
         vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = "cyan" })
         vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "#Af5fff" })
         vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = "#ee7777" })
         vim.api.nvim_set_hl(0, "GitSignsChangeDelet", { fg = "red" })
 
-        --         vim.api.nvim_set_hl(0, "Search", { bg = "None", fg = "Red" })
-        --         vim.api.nvim_set_hl(0, "String", { fg = "#88aabb", ctermfg = 110 })
-        --         vim.api.nvim_set_hl(0, "htmlTagName", { fg = "#696969", bold = true, italic = true })
-        --         vim.cmd([[hi link tsxTagName htmlTagName]])
-        --         -- Number, NERDTree, and Operator highlights
-        --         vim.api.nvim_set_hl(0, "Number", { fg = "#ee7777", ctermfg = 208 })
-        --         vim.api.nvim_set_hl(0, "NERDTreeFlags", { fg = "#88aabb", ctermfg = 208 })
-        --         vim.api.nvim_set_hl(0, "Operator", { fg = "#888888" })
-        --         -- Typescript highlights
-        --         vim.api.nvim_set_hl(0, "typescriptPredefinedType", { fg = "#60687a", italic = true })
-        --         vim.api.nvim_set_hl(0, "typescriptTypeReference", { fg = "#60687a", italic = true })
-
-        --         -- -- Directory, COC, and Diagnostic highlights
-        -- vim.api.nvim_set_hl(0, "Directory", { fg = "#aa4444" })
-        --         -- vim.api.nvim_set_hl(0, "COCWarningSign", {fg = "#Af5fff"})
-        --         -- vim.api.nvim_set_hl(0, "COCErrorSign", {fg = "#aa4444"})
-        --         --
-        -- -- Pmenu and Diagnostic highlights
-        -- vim.api.nvim_set_hl(0, "Pmenu", { ctermfg = 250, ctermbg = 235, fg = "#bcbcbc", bg = "#262626" })
-        -- vim.api.nvim_set_hl(0, "PmenuSel", { ctermfg = 250, ctermbg = 131, fg = "#bcbcbc", bg = "#af5f5f" })
-
         -- Lualine and whitespace highlights
         vim.api.nvim_set_hl(0, "DiagnosticError", { fg = "#ee7777" })
         vim.api.nvim_set_hl(0, "ExtraWhitespace", { bg = "#242424" })
 
-        -- -- Git blamer, MiniIndentscope, and VertSplit color adjustments
-        -- vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { fg = "#4c4c4c" })
-        -- vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = "#343434" })
-        -- vim.api.nvim_set_hl(0, "VertSplit", { bg = "#40452a", fg = "#1d1f21" })
-
-        -- --" Neovim Indent-Blankline
-        -- vim.api.nvim_set_hl(0, "IndentBlanklineChar", { fg = "#3a3a3a" })
-        -- vim.api.nvim_set_hl(0, "IndentBlanklineSpaceChar", { fg = "#6c6c6c" })
-        -- vim.api.nvim_set_hl(0, "IndentBlanklineSpaceCharBlankLine", { fg = "#6c6c6c" })
-        -- vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg = "#6c6c6c" })
 
         -- NVIM_CMP
         vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { fg = "#808080", strikethrough = true })
@@ -370,11 +396,29 @@ lvim.autocommands = {
         vim.api.nvim_set_hl(0, "TelescopeNormal", { fg = "#6c6c6c" })
         vim.api.nvim_set_hl(0, "TelescopeSelection", { fg = "#D4D4D4" })
         vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = "#C586C0" })
-        vim.api.nvim_set_hl(0, "IlluminatedWord", { bg = "#3c3c3c" })
-        vim.api.nvim_set_hl(0, "IlluminatedCurWord", { bg = "#3c3c3c" })
-        vim.api.nvim_set_hl(0, "IlluminatedWordText", { bg = "#3c3c3c" })
-        vim.api.nvim_set_hl(0, "IlluminatedWordRead", { bg = "#3c3c3c" })
-        vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { bg = "#3c3c3c" })
+
+        --         vim.api.nvim_set_hl(0, "Search", { bg = "None", fg = "Red" })
+        --         vim.api.nvim_set_hl(0, "String", { fg = "#88aabb", ctermfg = 110 })
+        --         vim.api.nvim_set_hl(0, "htmlTagName", { fg = "#696969", bold = true, italic = true })
+        --         vim.cmd([[hi link tsxTagName htmlTagName]])
+        --         -- Number, NERDTree, and Operator highlights
+        --         vim.api.nvim_set_hl(0, "Number", { fg = "#ee7777", ctermfg = 208 })
+        --         vim.api.nvim_set_hl(0, "NERDTreeFlags", { fg = "#88aabb", ctermfg = 208 })
+        --         vim.api.nvim_set_hl(0, "Operator", { fg = "#888888" })
+        --         -- Typescript highlights
+        --         vim.api.nvim_set_hl(0, "typescriptPredefinedType", { fg = "#60687a", italic = true })
+        --         vim.api.nvim_set_hl(0, "typescriptTypeReference", { fg = "#60687a", italic = true })
+
+        -- -- Git blamer, MiniIndentscope, and VertSplit color adjustments
+        -- vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { fg = "#4c4c4c" })
+        -- vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = "#343434" })
+        -- vim.api.nvim_set_hl(0, "VertSplit", { bg = "#40452a", fg = "#1d1f21" })
+
+        -- --" Neovim Indent-Blankline
+        -- vim.api.nvim_set_hl(0, "IndentBlanklineChar", { fg = "#3a3a3a" })
+        -- vim.api.nvim_set_hl(0, "IndentBlanklineSpaceChar", { fg = "#6c6c6c" })
+        -- vim.api.nvim_set_hl(0, "IndentBlanklineSpaceCharBlankLine", { fg = "#6c6c6c" })
+        -- vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg = "#6c6c6c" })
       end,
     },
   },
@@ -502,6 +546,65 @@ lvim.builtin.cmp.formatting = {
     return vim_item
   end
 }
+local lspkind_comparator = function(conf)
+  local lsp_types = require('cmp.types').lsp
+  return function(entry1, entry2)
+    if entry1.source.name ~= 'nvim_lsp' then
+      if entry2.source.name == 'nvim_lsp' then
+        return false
+      else
+        return nil
+      end
+    end
+    local kind1 = lsp_types.CompletionItemKind[entry1:get_kind()]
+    local kind2 = lsp_types.CompletionItemKind[entry2:get_kind()]
+
+    local priority1 = conf.kind_priority[kind1] or 0
+    local priority2 = conf.kind_priority[kind2] or 0
+    if priority1 == priority2 then
+      return nil
+    end
+    return priority2 < priority1
+  end
+end
+
+local label_comparator = function(entry1, entry2)
+  return entry1.completion_item.label < entry2.completion_item.label
+end
+lvim.builtin.cmp.sorting = {
+  comparators = {
+    lspkind_comparator({
+      kind_priority = {
+        Field = 11,
+        Property = 11,
+        Constant = 10,
+        Enum = 10,
+        EnumMember = 10,
+        Event = 10,
+        Function = 10,
+        Method = 10,
+        Operator = 10,
+        Reference = 10,
+        Struct = 10,
+        Variable = 9,
+        File = 8,
+        Folder = 8,
+        Class = 5,
+        Color = 5,
+        Module = 5,
+        Keyword = 2,
+        Constructor = 1,
+        Interface = 1,
+        Snippet = 0,
+        Text = 1,
+        TypeParameter = 1,
+        Unit = 1,
+        Value = 1,
+      },
+    }),
+    label_comparator,
+  }
+}
 
 
 
@@ -606,11 +709,12 @@ vim.opt.foldenable     = false
 
 
 
-lvim.keys.normal_mode[',/'] = ":noh<CR>"
 lvim.builtin.which_key.mappings['e'] = {}
 lvim.builtin.which_key.mappings['c'] = {}
 lvim.builtin.which_key.mappings['/'] = {}
 
+lvim.keys.normal_mode['<leader>w'] = ":w!<CR>"
+lvim.keys.normal_mode[',/'] = ":noh<CR>"
 lvim.keys.normal_mode['<M-l>'] = ":wincmd l<CR>"
 lvim.keys.normal_mode['<M-h>'] = ":wincmd h<CR>"
 

@@ -138,7 +138,7 @@ bindsym $mod+Shift+e split h
 # toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 # toggle tiling / floating
-bindsym $mod+t floating toggle
+# bindsym $mod+t floating toggle
 
 #############################
 ###      WorkSpaces       ###
@@ -168,6 +168,7 @@ bindsym $mod+ctrl+p workspace 9
 bindsym $mod+Tab workspace back_and_forth
 
 assign [class="Google-chrome"] $4
+assign [class="Vivaldi"] $4
 assign [class="KeePassXC"] $9
 assign [class="Chromium"] $4
 

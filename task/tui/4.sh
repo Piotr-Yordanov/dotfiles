@@ -1,2 +1,2 @@
 #!/bin/bash
-task context inbox
+task context hobbies

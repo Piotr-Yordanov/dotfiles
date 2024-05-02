@@ -9,3 +9,9 @@ function reset_lvim
 
   mv ~/.config/lvim/config.lua.bak ~/.config/lvim/config.lua
 end
+
+function install_rye_jukit
+  rye add --dev ipython pip matplotlib
+  rye sync
+  rye run python3 -m pip install --upgrade pynvim
+end

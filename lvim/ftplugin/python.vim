@@ -1,7 +1,8 @@
 " autocmd BufWritePost main.py call jukit#send#section(0) | normal! \<CR>
 " autocmd BufWritePost tests.py call jukit#send#section(0) | normal! \<CR>
 
-let g:jukit_shell_cmd = 'poetry run ipython3'
+" let g:jukit_shell_cmd = 'poetry run ipython3'
+let g:jukit_shell_cmd = 'rye run ipython3'
 " let g:jukit_shell_cmd = './venv/bin/python'
 nnoremap <leader><space> :call jukit#splits#output()<cr>:call jukit#send#section(0)<cr>
 nnoremap <leader>e :call jukit#send#section(0)<cr>

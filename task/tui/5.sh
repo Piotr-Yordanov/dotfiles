@@ -1,2 +1,2 @@
 #!/bin/bash
-task context hobbies
+task context waiting_for
