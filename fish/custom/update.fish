@@ -6,7 +6,7 @@ function update
   sudo pacman -Fyy
   sudo pacman -Syyu
   # trizen -Syyu --noconfirm
-  yay -Syyu
+  yes | yay -Syyu
   # paru -Sua
   fisher
   npm update -g

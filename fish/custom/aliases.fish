@@ -188,3 +188,4 @@ alias ra="rye add"
 alias bb="git add .; git commit -m 'heartbeat'; git push"
 
 alias ze="zellij"
+alias yay="yes | yay"

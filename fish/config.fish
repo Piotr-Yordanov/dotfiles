@@ -22,7 +22,6 @@ set -U fish_user_paths $HOME/.local/bin $HOME/.local/npm-global/bin $HOME/.confi
 set -aU fish_user_paths $HOME/go/bin $HOME/.config/bin/ $HOME/.cargo/bin
 set -U ANDROID_SDK_ROOT $HOME/Android/Sdk
 set -U ANDROID_HOME $HOME/Android/Sdk
-set -Ux PYENV_ROOT $HOME/.pyenv
 
 set -Ua fish_user_paths $HOME/Android/Sdk/emulator $HOME/Android/Sdk/tools $HOME/Android/Sdk/tools/bin $HOME/Android/Sdk/platform-tools
 set -Ua fish_user_paths $HOME/.cache/git-fuzzy/bin
@@ -61,7 +60,6 @@ set -x IPYTHONDIR ~/.config/ipython
 zoxide init fish | source
 
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
-pyenv init - | source
 
 export PYTHONWARNINGS="ignore"
 export JSII_SILENCE_WARNING_UNTESTED_NODE_VERSION=true
