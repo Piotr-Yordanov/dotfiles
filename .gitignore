@@ -91,3 +91,4 @@ rye/py
 rye/uv
 rye/env
 bytertc
+node_modules
