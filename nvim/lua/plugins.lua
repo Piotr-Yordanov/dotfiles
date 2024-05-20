@@ -43,6 +43,8 @@ require("lazy").setup({
     "neovim/nvim-lspconfig",
   },
 
+  { 'jbmorgado/vim-pine-script' },
+
   'jose-elias-alvarez/null-ls.nvim',
   'MunifTanjim/prettier.nvim',
 
@@ -109,7 +111,7 @@ require("lazy").setup({
   'karb94/neoscroll.nvim',
   'mcauley-penney/tidy.nvim',    -- Remove trailing whitespace
   'gelguy/wilder.nvim',
-  { 'echasnovski/mini.nvim',  branch = 'stable' },
+  { 'echasnovski/mini.nvim',    branch = 'stable' },
 
 
 
@@ -129,7 +131,7 @@ require("lazy").setup({
   -- Git
   -- use 'tpope/vim-fongitive'
   'lewis6991/gitsigns.nvim',
-  { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' },
+  { 'sindrets/diffview.nvim',   requires = 'nvim-lua/plenary.nvim' },
 
   -- use 'github/copilot.vim'
   {
@@ -216,7 +218,7 @@ require("lazy").setup({
   -- Files and Tags
   'kyazdani42/nvim-tree.lua',
   'preservim/tagbar',
-  { 'akinsho/bufferline.nvim',  tag = "*", requires = 'kyazdani42/nvim-web-devicons' },
+  { 'akinsho/bufferline.nvim',  tag = "*",                         requires = 'kyazdani42/nvim-web-devicons' },
 
   -- Searching
   { 'kevinhwang91/nvim-hlslens' },

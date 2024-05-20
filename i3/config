@@ -154,6 +154,7 @@ set $7 7
 set $8 8
 set $9 9
 set $10 10
+set $11 11
 
 
 bindsym $mod+1 workspace 1
@@ -165,11 +166,14 @@ bindsym $mod+ctrl+w workspace 6
 bindsym $mod+ctrl+e workspace 7
 bindsym $mod+ctrl+r workspace 8
 bindsym $mod+ctrl+p workspace 9
+bindsym $mod+ctrl+o workspace 10
+bindsym $mod+ctrl+i workspace 11
 bindsym $mod+Tab workspace back_and_forth
 
 assign [class="Google-chrome"] $4
 assign [class="Vivaldi"] $4
-assign [class="KeePassXC"] $9
+assign [class="KeePassXC"] $10
+assign [class="Upwork"] $11
 assign [class="Chromium"] $4
 
 # assign [class="Ferdium"] $4
