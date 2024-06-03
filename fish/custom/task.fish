@@ -10,13 +10,6 @@ function vpp --description "Create new project"
   v ~/warehouse/vimwiki/projects/$argv.md
 end
 
-function vpi --description "Create new project"
-  touch ~/warehouse/vimwiki/inbox/$argv.md
-  echo ti >> ~/warehouse/vimwiki/inbox/$argv.md
-  vpi ~/warehouse/vimwiki/inbox/$argv.md
-end
-
-
 function vvv
     #!/usr/bin/fish
     set search_directory ~/warehouse/vimwiki/projects

@@ -9,6 +9,10 @@ feh --bg-center $HOME/.config/feh/monk-meditation.jpg
 # nohup alacritty -t 'tt_alacritty' -e taskwarrior-tui</dev/null >/tmp/green 2>/tmp/green &
 
 
+## Keepass
+killall keepassxc
+nohup keepassxc  </dev/null >/tmp/nohup.out 2>/tmp/nohup.err &
+
 ## Polybar
 killall polybar
 nohup $HOME/.config/polybar/launch.sh --grayblocks  </dev/null >/tmp/nohup.out 2>/tmp/nohup.err &

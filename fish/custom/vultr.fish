@@ -13,29 +13,22 @@ function vvrn
 
 end
 
+
+
+# Small machine
+function shv
+    ssh -i "/home/alpha/workspace/rocket-bot/MT5-Docker/new_server_creation/main.pem" arch@ec2-18-188-187-12.us-east-2.compute.amazonaws.com
+end
 function vrn
     nohup remmina -c "vnc://ec2-18-188-187-12.us-east-2.compute.amazonaws.com?VncPassword=8M7DDd0NRcw8W+kUPOBSXg==" </dev/null >/dev/null 2>&1 &
 end
 
-function sha
-  ssh -i "/home/alpha/workspace/piotryordanov/new_server_creation/main.pem" arch@ec2-3-15-199-49.us-east-2.compute.amazonaws.com
-end
 
-function shv
-    ssh -i "/home/alpha/workspace/rocket-bot/MT5-Docker/new_server_creation/main.pem" arch@ec2-18-188-187-12.us-east-2.compute.amazonaws.com
-end
-
+# Big C6 machine
 function shv2
-    ssh -i "/home/alpha/workspace/rocket-bot/MT5-Docker/new_server_creation/main.pem" arch@ec2-18-223-124-27.us-east-2.compute.amazonaws.com
-end
-function vrn2
-    vncviewer -passwd ~/workspace/rocket-bot/MT5-Docker/new_server_creation/assets/.vnc/passwd ec2-18-223-124-27.us-east-2.compute.amazonaws.com:5900
-end
-
-function shv3
     ssh -i "/home/alpha/workspace/rocket-bot/MT5-Docker/new_server_creation/main.pem" arch@ec2-18-117-229-169.us-east-2.compute.amazonaws.com
 end
-function vrn3
+function vrn2
     # vncviewer -passwd ~/workspace/rocket-bot/MT5-Docker/new_server_creation/assets/.vnc/passwd ec2-18-117-229-169.us-east-2.compute.amazonaws.com:5900
     nohup remmina -c "vnc://ec2-18-117-229-169.us-east-2.compute.amazonaws.com?VncPassword=8M7DDd0NRcw8W+kUPOBSXg==" </dev/null >/dev/null 2>&1 &
 end

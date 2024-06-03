@@ -5,8 +5,9 @@
       "---",
       "tags: [project, $1]",
       "---",
-      "= `!p snip.rv = snip.basename` =",
-      "== $2 | status:pending +${1|office,home,computer|} project:$2 ==",
+      "",
+      "= ${TM_FILENAME} =",
+      "== $2 | status:pending +${1|office,home,computer|} project:$2 =",
       "* $3"
     ],
     "description": "Project tag"
@@ -17,8 +18,9 @@
       "---",
       "tags: [project, office]",
       "---",
-      "= `!p snip.rv = snip.basename` =",
-      "== $2 | status:pending +office project:$2 ==",
+      "",
+      "= ${TM_FILENAME} =",
+      "== $2 | status:pending +office project:$2 =",
       "* $3"
     ],
     "description": "Office project tag"
@@ -29,7 +31,8 @@
       "---",
       "tags: [project, home]",
       "---",
-      "= `!p snip.rv = snip.basename` =",
+      "",
+      "= ${TM_FILENAME} =",
       "== $2 | status:pending +home project:$2 ==",
       "* $3"
     ],
@@ -41,7 +44,9 @@
       "---",
       "tags: [project]",
       "---",
-      "= `!p snip.rv = snip.basename` ="
+      "",
+      "= ${TM_FILENAME}",
+      "$2"
     ],
     "description": "Project tag"
   },
@@ -51,21 +56,11 @@
       "---",
       "tags: [evergreen, $1]",
       "---",
-      "= `!p snip.rv = snip.basename` =",
+      "",
+      "= ${TM_FILENAME}",
       "$2"
     ],
     "description": "Evergreen tag"
-  },
-  "ti": {
-    "prefix": "ti",
-    "body": [
-      "---",
-      "tags: [inbox]",
-      "---",
-      "= `!p snip.rv = snip.basename` =",
-      "$1"
-    ],
-    "description": "Inbox tag"
   },
   "tw": {
     "prefix": "tw",
@@ -79,7 +74,7 @@
   "tp": {
     "prefix": "tp",
     "body": [
-      "## $1 | project:$1"
+      "== $1 | project:$1"
     ],
     "description": "Create project"
   }

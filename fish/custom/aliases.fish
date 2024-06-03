@@ -40,7 +40,7 @@ alias cdw="cd $HOME/warehouse"
 
 # apps
 alias v="~/.local/bin/lvim"
-alias nv='nvim'
+alias nv='lvim'
 
 alias a="begin; alias; functions; end | fzf -i --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 alias f="vim -c 'History'"
@@ -51,7 +51,7 @@ alias ,c="v -c 'NV'"
 alias mpvnv="mpv --no-video"
 alias neo="neomutt"
 alias xc="xclip -selection clipboard"
-alias mc="env EDITOR=nvim ranger"
+alias mc="env EDITOR=lvim ranger"
 alias dd="diskonaut"
 alias sdcv="env HOME=$HOME/.local/share/sdcv sdcv"
 alias q0="pactl set-sink-volume 0 +2%"
@@ -103,16 +103,17 @@ alias ....='cd ../../..'
 alias fu='curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher; fisher u'
 
 # Task warrior
-alias t='task import rc.hooks=0 ~/warehouse/taskwarrior/all-tasks.json; taskwarrior-tui'
+# alias t='task import rc.hooks=0 ~/warehouse/taskwarrior/all-tasks.json; taskwarrior-tui'
+alias t='taskwarrior-tui -r main'
 alias ts='task export > all-tasks.json'
-alias ti="task add"
+alias ti='task import rc.hooks=0 ~/warehouse/taskwarrior/all-tasks.json; taskwarrior-tui'
 alias tcn="task context none"
 
 # VimWiki
-alias vp="nvim ~/warehouse/vimwiki/__projects.md"
-alias vpo="nvim ~/warehouse/vimwiki/__one_day_maybe.md"
-alias vpw="nvim ~/warehouse/vimwiki/__weekly.md"
-alias vpi="nvim ~/warehouse/vimwiki/index.md"
+alias vp="lvim ~/warehouse/vimwiki/__projects.md"
+alias vpo="lvim ~/warehouse/vimwiki/__one_day_maybe.md"
+alias vpw="lvim ~/warehouse/vimwiki/__weekly.md"
+alias vpi="lvim ~/warehouse/vimwiki/__inbox.md"
 
 # Youtube-dl
 alias yt="yt-dlp --extract-audio --embed-thumbnail --ffmpeg-location /usr/bin/ffmpeg"
@@ -137,7 +138,7 @@ alias fan-cool="sudo smbios-thermal-ctl --set-thermal-mode cool-bottom"
 alias fan="sudo sensors | grep Fan"
 
 # Tailscale and other VPN
-alias tsu="sudo tailscale up --accept-routes"
+alias tsu="sudo tailscale up --accept-routes --stateful-filtering"
 alias tsd="sudo tailscale down"
 alias tss="sudo tailscale status"
 alias nord="sudo nordvpn"
@@ -167,10 +168,7 @@ alias russ="russ --database-path ~/.config/russ/db"
 
 
 alias eurusd="curl http://www.floatrates.com/daily/eur.json | jq .usd"
-alias te="poetry run pytest"
-
 alias nc="ncmpcpp"
-
 alias davinci="/opt/resolve/bin/resolve"
 
 
@@ -181,6 +179,7 @@ alias rw="rye run watch"
 alias rd="rye run dev"
 alias rdd="rye run rdev"
 alias rz="rye run zellij"
+alias nz="npm run zellij"
 alias rs="rye sync"
 alias rss="rye sync; rye run python3 -m pip install --upgrade pynvim"
 alias ra="rye add"
@@ -188,4 +187,6 @@ alias ra="rye add"
 alias bb="git add .; git commit -m 'heartbeat'; git push"
 
 alias ze="zellij"
-alias yay="yes | yay"
+alias yay="yes | /usr/bin/yay"
+alias cz-install="commitizen init cz-conventional-changelog --pnpm --dev --exact"
+

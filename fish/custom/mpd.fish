@@ -34,3 +34,12 @@ function na
     mpc add $items[3]
     mpc play
 end
+
+function nsot
+    mpd
+    set -l items (mpc listall | grep -E ".*ASOT.*" | shuf -n 4)
+    echo $items[3]
+    mpc clear
+    mpc add $items[3]
+    mpc play
+end

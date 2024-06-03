@@ -24,7 +24,7 @@ set scrolloff 10
 set cursorpreviewfmt "\033[7;2m"
 
 # use enter for shell commands
-map <enter> shell
+map <enter> open
 
 # show the result of execution of previous commands
 map ` !true

@@ -65,7 +65,8 @@ uda.taskwarrior-tui.shortcuts.6=~/.config/task/tui/6.sh
 uda.taskwarrior-tui.shortcuts.7=~/.config/task/tui/7.sh
 uda.taskwarrior-tui.shortcuts.8=~/.config/task/tui/8.sh
 uda.taskwarrior-tui.shortcuts.9=~/.config/task/tui/9.sh
-uda.taskwarrior-tui.task-report.next.filter=status:pending and -BLOCKING description!~header project!~_backlog
+# uda.taskwarrior-tui.task-report.next.filter=status:pending and -BLOCKING description!~header project!~_backlog -project
+# uda.taskwarrior-tui.task-report.next.filter=status:pending
 
 
 # ============================================================================= #
@@ -88,18 +89,21 @@ color.due=red on black
 # ============================================================================= #
 report.next.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Description,Urg,Wait,Dynalist
 report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.truncated_count,urgency,wait.remaining,dynalist
-report.next.sort=urgency-,id+,tags-/,project-/,urgency-,due-
-# report.next.filter = status:pending (pro:release)
+# report.next.sort=urgency-,id+,project-/,tags-/,urgency-,due-
+report.next.sort=tags+\/,due+\/,project-
+report.next.filter=status:pending
+
+
 
 # report.all.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Description,Urg,Wait
 # report.all.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.truncated_count,urgency,wait.remaining
 # report.all.sort=tags+\/,due+\/,project-
-# report.all.filter=status:pending -BLOCKED
+# report.all.filter=status:pending
 #
-# report.test.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Description,Urg,Wait
-# report.test.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.truncated_count,urgency,wait.remaining
-# report.test.sort=tags+,project-/,due+,urgency-
-# # report.test.filter=status:pending (pro:release)
+report.main.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Description,Urg,Wait
+report.main.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.truncated_count,urgency,wait.remaining
+report.main.sort=tags+,project-/,due+,urgency-
+report.main.filter=status:pending
 #
 # report._reviewed.description=Tasksh review report.  Adjust the filter to your needs.
 # report._reviewed.columns=uuid
@@ -113,14 +117,15 @@ report.next.sort=urgency-,id+,tags-/,project-/,urgency-,due-
 # ============================================================================= #
 #                                 CONTEXT                                       #
 # ============================================================================= #
-context.inbox.read=+in
-context.inbox.write=+in
+context.inbox.read=+inbox
+context.inbox.write=+inbox
 
 context.next.read=+next or due:today
 context.next.write=+next
 
 context.office.read=+office
 context.office.write=+office
+context.office.sort=urgency-,id+,project+/,tags-/,urgency-,due-
 
 context.home.read=+home
 context.home.write=+home

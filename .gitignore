@@ -92,3 +92,5 @@ rye/uv
 rye/env
 bytertc
 node_modules
+solana
+xarchiver

@@ -2,16 +2,15 @@
 -- Video Tutorials: https://www.youtube.com/watch?v=sFA9kX-Ud_c&list=PLhoH5vyxr6QqGu0i7tt_XoVK9v-KvZ3m6
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
-vim.g.jukit_mappings_ext_enabled = "0"
-vim.g.vimwiki_map_prefix         = "<leader>W"
-vim.cmd [[
-  let g:vimwiki_map_prefix = '<Leader>W'
-  let g:vimwiki_ext2syntax = {'.md': 'markdown'}
-  set foldmethod=manual
-  " let taskwiki_disable_concealcursor="yes"
-  let g:vimwiki_conceallevel = 0
-]]
-lvim.leader = ","
+vim.g.jukit_mappings_ext_enabled   = "0"
+
+vim.g.vimwiki_global_ext           = 0
+vim.g.vimwiki_conceallevel         = 0
+vim.g.vimwiki_path                 = '~/warehouse/vimwiki'
+vim.g.vimwiki_list                 = { { path = '~/warehouse/vimwiki/', ext = '.wiki' } }
+vim.g.vimwiki_map_prefix           = '<Leader>W'
+
+lvim.leader                        = ","
 lvim.builtin.terminal.open_mapping = "<c-t>"
 
 
@@ -47,6 +46,8 @@ lvim.plugins = {
 
       -- see below for full list of optional dependencies 👇
     },
+
+
     opts = {
       workspaces = {
         {
@@ -55,21 +56,42 @@ lvim.plugins = {
         },
       },
 
+      -- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
+      -- way then set 'mappings = {}'.
+      mappings = {
+        -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+        ["gf"] = {
+          action = function()
+            return require("obsidian").util.gf_passthrough()
+          end,
+          opts = { noremap = false, expr = true, buffer = true },
+        },
+        -- Toggle check-boxes.
+        ["<leader>ch"] = {
+          action = function()
+            return require("obsidian").util.toggle_checkbox()
+          end,
+          opts = { buffer = true },
+        },
+        -- Smart action depending on context, either follow link or toggle checkbox.
+        ["<cr>"] = {
+          action = function()
+            return require("obsidian").util.smart_action()
+          end,
+          opts = { buffer = true, expr = true },
+        }
+      },
+      daily_notes = {
+        -- Optional, if you keep daily notes in a separate directory.
+        folder = "✍️ Diary/Daily",
+        -- Optional, if you want to change the date format for the ID of daily notes.
+        date_format = "%Y-%m-%d",
+        -- Optional, if you want to change the date format of the default alias of daily notes.
+        alias_format = "",
+        -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
+        template = nil
+      },
       -- see below for full list of options 👇
-    },
-
-  },
-  {
-    "epwalsh/pomo.nvim",
-    version = "*", -- Recommended, use latest release instead of latest commit
-    lazy = true,
-    cmd = { "TimerStart", "TimerRepeat" },
-    dependencies = {
-      -- Optional, but highly recommended if you want to use the "Default" timer
-      "rcarriga/nvim-notify",
-    },
-    opts = {
-      -- See below for full list of options 👇
     },
   },
 
@@ -265,6 +287,21 @@ lvim.plugins = {
       -- vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
     end
   },
+
+  -- {
+  --   "vhyrro/luarocks.nvim",
+  --   priority = 1001,
+  --   opts = {
+  --     rocks = { "magick" },
+  --   },
+  -- },
+  -- {
+  --   '3rd/image.nvim',
+  --   config = function()
+  --     require("image").setup()
+  --   end,
+  -- },
+
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
@@ -275,8 +312,8 @@ lvim.plugins = {
       { ':', '<cmd>Telescope cmdline<cr>', desc = 'Cmdline' }
     },
     config = function(_, opts)
-      require("telescope").setup(opts)
       require("telescope").load_extension('cmdline')
+      require("telescope").setup(opts)
     end,
   },
   {
@@ -352,6 +389,7 @@ lvim.autocommands = {
           vim.opt.background = "dark"
           vim.api.nvim_set_hl(0, "CursorLine", { bg = "#2a2a2a" })
           vim.api.nvim_set_hl(0, "Normal", { bg = "#1d1f21" })
+          vim.api.nvim_set_hl(0, "Normal", { bg = "#111317" })
 
           vim.api.nvim_set_hl(0, "IlluminatedWord", { bg = "#3c3c3c" })
           vim.api.nvim_set_hl(0, "IlluminatedCurWord", { bg = "#3c3c3c" })

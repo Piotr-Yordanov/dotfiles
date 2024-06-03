@@ -270,7 +270,7 @@ exec --no-startup-id fish -c google-chrome-stable --force-device-scale-factor=1.
 
 # Manage PAVUCONTROL
 bindsym $mod+m [con_mark="music"] scratchpad show
-for_window [class="Pavucontrol"] mark "music", move scratchpad
+for_window [class="pavucontrol"] mark "music", move scratchpad
 exec systemd-run --property=Restart=always --user --no-ask-password pavucontrol
 
 # Manage One Shot Terminal
